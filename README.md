@@ -1,4 +1,4 @@
 GiveMeMoney
 ===========
 
-Web de control de gastos semanales.
+Web de control de gastos semanales
