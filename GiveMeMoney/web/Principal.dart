@@ -1,7 +1,8 @@
 library GiveMeMoney;
 
 import 'Usuario.dart';
-
+import 'Gasto.dart';
+/*
 class Principal{
   
   List<Usuario> usuarios;
@@ -35,7 +36,7 @@ class Principal{
     this.usuarios.add(user);
   }
   
-}
+}*/
 
 void main(){
     
@@ -46,5 +47,9 @@ void main(){
     nuevo.cambiarPass("12aa54");
     nuevo.recordarPassword();
     nuevo.setLogin("Ramonchu");
-    nuevo.mostrarAlumno();
+  //  nuevo.mostrarAlumno();
+ //   Gasto a(3,"pan");
+  //  nuevo.introducirGastos(3,"Ocio");
+    nuevo.consultarGastos();
+  //  print (b);
   }

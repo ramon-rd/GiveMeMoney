@@ -1,4 +1,5 @@
-part of GiveMeMoney;
+//part of GiveMeMoney;
+//library GiveMeMoney;
 
 class Gasto{
   
