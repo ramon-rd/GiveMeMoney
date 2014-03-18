@@ -6,8 +6,8 @@
     <title>GiveMeMoney</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
   </head>
-  <body>
-  <nav class="navbar navbar-default" role="navigation">
+  <body> 
+  <nav class="navbar navbar-inverse" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -24,40 +24,33 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Perfil</a></li>
-        <li><a href="#">Añadir gastos</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
+        <li><a href="#">Ayuda</a></li>     
       </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
         </div>
-        <button type="submit" class="btn btn-default">Registro</button>
-        <button type="submit" class="btn btn-default">Login</button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
+        <button type="submit" class="btn btn-default">Añadir gastos</button>
+        <div class="btn-group">
+          <button type="button" class="btn btn-info">Gastos</button>
+          <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Diarios</a></li>
+            <li><a href="#">Semanales</a></li>
+            <li><a href="#">Mensuales</a></li>
+            <li><a href="#">Anuales</a></li>
             <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
           </ul>
-        </li>
-      </ul>
+        </div>
+      </form>
+      <form style="padding-top: 8px" class="nav navbar-nav navbar-right">
+        <button type="submit" class="btn btn-default">Registro</button>
+        <button type="submit" class="btn btn-success">Login</button>
+        <button type="submit" class="btn btn-danger">Logout</button>
+      </form>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
@@ -69,10 +62,115 @@
     <div id="sample_container_id">
       <p id="sample_text_id">Click me!</p>
     </div>
+    
+      <div class="push"></div>
+      <div class="row">
+        <div class="col-xs-6 col-sm-4">
+          <div class="thumbnail">
+            <!--graficas-->
+              <h2>Gastos</h2>
+                <p>.....[Muestra espacio de gráfica]...</p>
+                <div class="list-group">
+                  <a href="#" class="list-group-item active">
+                    Opciones:
+                  </a>
+                  <a href="#" class="list-group-item">Consultar gráfica diaria</a>
+                  <a href="#" class="list-group-item">Consultar gráfica semanal</a>
+                  <a href="#" class="list-group-item">Consultar gráfica mensual</a>
+                  <a href="#" class="list-group-item">Consultar gráfica anual</a>
+                </div>
+                <p><a href="#" class="btn btn-primary" role="button">OK</a></p>
+           </div>
+         </div>
+      </div>
+       <div class="push"></div>
+      <div class="row">
+        <div class="col-xs-6 col-sm-4">
+          <div class="thumbnail">
+            <!--graficas-->
+              <h2>Perfil</h2>
+                <p>.....[Muestra espacio de foto...</p>
+                
+                <p><a href="#" class="btn btn-primary" role="button">OK</a></p>
+           </div>
+         </div>
+      </div>
 
+    
     <script type="application/dart" src="givememoney.dart"></script>
     <script src="packages/browser/dart.js"></script>
-
+    <div class="push"></div>
+    <footer class="panel-footer" role="navigation">
+      <div class="container">
+        <div class="col-sm-3">
+          <table class="table table-condensed">
+            <thead>
+              <td><h3>Offices</h3></td>
+            </thead>
+            <tr>
+              <td><strong>GiveMeMoney &amp; Publishing</strong></td>
+            </tr>
+            <tr>
+              <td>Calle Periodista Daniel Saucedo Aranda s/n</td>
+            </tr>
+            <tr>
+             <td>Granada 18009 - SPAIN</td>
+           </tr>
+         </table>
+       </div>
+       <div class="col-sm-3">
+         <table class="table table-condensed">
+           <thead>
+             <td><h3>Join Us</h3></td>
+           </thead>
+           <tr>
+             <td>jcastilloprez@correo.ugr.es</td>
+           </tr>
+           <tr>
+             <td>josemlp.montefrio@gmail.com</td>
+           </tr>
+           <tr>
+             <td>victoriasantiago@correo.ugr.es</td>
+           </tr>
+         </table>
+       </div>
+       <div class="col-sm-3">
+         <table class="table table-condensed">
+           <thead>
+             <td><h3>Say Hello!</h3></td>
+           </thead>
+           <tr>
+             <td>+34 958 242 802</td>
+           </tr>
+           <tr>
+             <td>+34 958 242 801</td>
+           </tr>
+           <tr>
+             <td>ramon92@correo.ugr.es</td>
+           </tr>
+         </table>
+       </div>
+       <div class="col-sm-3">
+         <table class="table table-condensed">
+           <thead>
+             <td><h3>Stop By</h3></td>
+           </thead>
+           <tr>
+             <td>Monday - Friday 8:30 - 17:30</td>
+           </tr>
+           <tr>
+             <td>Saturday: Closed</td>
+           </tr>
+           <tr>
+             <td>Sunday: Closed</td>
+           </tr>
+         </table>
+       </div>
+       <div>
+       <p>Publicado bajo licencia GNU GENERAL PUBLIC LICENSE Version 3</p>
+       </div>
+      </div><!-- ./container -->
+    </footer>
     
   </body>
 </html>
