@@ -77,7 +77,7 @@ class GastoDiario{
   }
   double calcularTotal()
   {
-    double total = 0;
+    double total = 0.0;
     
     for (int i = 0; i < totales.length; i++)
     {
