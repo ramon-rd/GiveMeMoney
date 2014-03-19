@@ -1,10 +1,11 @@
 library GiveMeMoney;
 
-part 'Gasto.dart';
+//part 'Gasto.dart';
+import 'Gasto.dart';
 
 class GastoDiario{
   
-  List<Gasto> gastosRealizados;
+  List<Gasto> gastosRealizados; //¿sobra?
   List<Gasto> totales;
   num total;
   DateTime fecha;
@@ -15,7 +16,7 @@ class GastoDiario{
     this.total = 0;
     this.fecha = new DateTime.now();
     this.gastosRealizados = new List<Gasto>();
-    this.totales = new List<Gasto>(6);
+    this.totales = new List<Gasto>();
     
     /* Inicializar los gastos totales */
     /* Lista estática que sirve como acumulador de los gastos que realiza un usuario al día. */
@@ -29,8 +30,10 @@ class GastoDiario{
     this.totales.add(categoria4);
     Gasto categoria5 = new Gasto(0, "Viajes");
     this.totales.add(categoria5);
-    Gasto categoria6 = new Gasto(0, "Trasportes");
+    Gasto categoria6 = new Gasto(0, "Transportes");
     this.totales.add(categoria6);
+    Gasto categoria7 = new Gasto(0, "Otros");
+    this.totales.add(categoria7);
 
     
   }
@@ -46,19 +49,23 @@ class GastoDiario{
   DateTime getFecha(){
     return this.fecha;
   }
-  List<Gasto> getGastosRealizados(){
-    return this.gastosRealizados;
+  void getGastosRealizados(){
+   // return this.totales; //cambiado
+    print("hola");
+    for (int i = 0; i < this.totales.length; i++)
+      print(this.totales.elementAt(i).valor);
   }
  
   /* Añadir un gasto al total diario. =) */
   void aniadirGasto(Gasto gasto){
-    
+    print("pepe");
     /* Determinar si el gasto es correcto para añadirlo. */
     if(gasto.valor == null || gasto.valor <= 0){
       print("Un gasto nulo, negativo o 0 no se considera gasto.");
     }
     else{
       // Esto podría hacerse accediendo directamente al índice de la categoría.
+      print("entro");
       for(int i=0; i < this.totales.length; i++){
         /* Si coinciden las categorías, acumular el gasto en dicha categoría. */
         if(gasto.getCategoria() == totales.elementAt(i).getCategoria()){
@@ -68,6 +75,19 @@ class GastoDiario{
     }
     
   }
-  
+  num calcularTotal()
+  {
+    num total = 0;
+    
+    for (int i = 0; i < totales.length; i++)
+    {
+      total+= totales.elementAt(i).valor;      
+    }
+    return total;
+  } 
+  void saluda()
+  {
+    print("Hola");
+  }
   
 }
