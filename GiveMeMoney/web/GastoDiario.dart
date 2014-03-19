@@ -16,7 +16,7 @@ class GastoDiario{
     this.total = 0;
     this.fecha = new DateTime.now();
     this.gastosRealizados = new List<Gasto>();
-    this.totales = new List<Gasto>(7);
+    this.totales = new List<Gasto>();
     
     /* Inicializar los gastos totales */
     /* Lista estática que sirve como acumulador de los gastos que realiza un usuario al día. */
@@ -53,7 +53,7 @@ class GastoDiario{
    // return this.totales; //cambiado
     print("hola");
     for (int i = 0; i < this.totales.length; i++)
-      print(this.totales[i].valor);
+      print(this.totales.elementAt(i).valor);
   }
  
   /* Añadir un gasto al total diario. =) */
@@ -75,20 +75,19 @@ class GastoDiario{
     }
     
   }
-  double calcularTotal()
+  num calcularTotal()
   {
-    double total = 0.0;
+    num total = 0;
     
     for (int i = 0; i < totales.length; i++)
     {
-      total+= totales[i].valor;      
+      total+= totales.elementAt(i).valor;      
     }
     return total;
-  }
+  } 
   void saluda()
   {
-    print("hola")
+    print("Hola");
   }
-  
   
 }

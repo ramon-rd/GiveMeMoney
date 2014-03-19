@@ -49,7 +49,10 @@ void main(){
     nuevo.setLogin("Ramonchu");
   //  nuevo.mostrarAlumno();
  //   Gasto a(3,"pan");
-  //  nuevo.introducirGastos(3,"Ocio");
+    nuevo.introducirGastos(3,"Ocio");
+    nuevo.introducirGastos(5,"Viajes");
     nuevo.consultarGastos();
+    num dinero = nuevo.saldoRestante();
+    print (dinero);
   //  print (b);
   }

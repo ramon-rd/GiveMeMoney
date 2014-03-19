@@ -1,4 +1,4 @@
-//library GiveMeMoney;
+library GiveMeMoney;
 
 import 'GastoDiario.dart';
 import 'Gasto.dart';
@@ -73,27 +73,20 @@ class Usuario
 
     Gasto nuevo_gasto = new Gasto(precio,tipo);
     
-    if (this.saldo > precio)
-    {
-      GastoDiario gasto_aux;
-      print("a");
-      print(precio);
-      gasto_aux.getFecha();
-      print("b");
-     // gasto_semanal[0].aniadirGasto(nuevo_gasto);
-      print("c");
-      this.saldo = this.saldo-nuevo_gasto.valor;
-      print("d");
-    }
-    else
-      print("No tienes suficiente dinero para este gasto");
+    GastoDiario gasto_aux = new GastoDiario();
+    
+    
+    gasto_aux.aniadirGasto(nuevo_gasto);
+    
+    this.saldo = this.saldo-nuevo_gasto.valor;
+    print(this.saldo);
+    
+    gasto_semanal.add(gasto_aux);
   }
   
   void consultarGastos()
-  {
-    print("juan");
-    gasto_semanal[0].getGastosRealizados();
-    print("paco");
+  {  
+    gasto_semanal.elementAt(1).getGastosRealizados();
   }
   
   num saldoRestante()
@@ -126,7 +119,7 @@ class Usuario
   {
     num media = 0;
     for (int i = 0; i < gasto_semanal.length; i++){
-        media += gasto_semanal[i].total;
+      media += gasto_semanal.elementAt(i).total;
     }
     media /= 7;
     
