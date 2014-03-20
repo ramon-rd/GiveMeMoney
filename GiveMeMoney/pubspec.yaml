@@ -1,4 +1,7 @@
 name: GiveMeMoney
-description: A sample web application
+description: A sample web application  
+
 dependencies:
   browser: any
+  js: any
+

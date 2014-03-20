@@ -9,11 +9,7 @@
  
   <body>   
     
-<<<<<<< HEAD
       <nav class="navbar navbar-inverse" role="navigation">
-=======
- <nav class="navbar navbar-inverse" role="navigation">
->>>>>>> e8cbe91b18ee45f44fc41b65fc9ef8033948e4ff
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -23,23 +19,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-<<<<<<< HEAD
-      <a class="navbar-brand" href="#" >GiveMeMoney </a>
-=======
-      <a class="navbar-brand" href="/GiveMeMoney/web/givememoney.html">GiveMeMoney </a>
->>>>>>> e8cbe91b18ee45f44fc41b65fc9ef8033948e4ff
+      <a class="navbar-brand" href="/GiveMeMoney/web/givememoney.html"> GiveMeMoney </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-<<<<<<< HEAD
-        <li class="active"><a href="#">Perfil</a></li>
-        <li><a href="#">Ayuda</a></li>     
-=======
         <li class="active"><a href="/GiveMeMoney/web/givememoney.html">Perfil</a></li>
         <li><a href="/GiveMeMoney/web/contacto.html">Conócenos</a></li>     
->>>>>>> e8cbe91b18ee45f44fc41b65fc9ef8033948e4ff
       </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
@@ -63,11 +50,7 @@
       </form>
       <form style="padding-top: 8px" class="nav navbar-nav navbar-right">
         <a href="/GiveMeMoney/web/Registro.html"><button type="button" class="btn btn-default" >Registro</button></a>
-<<<<<<< HEAD
-        <button type="submit" class="btn btn-success">Login</button>
-=======
         <a href="/GiveMeMoney/web/login.html"><button type="button" class="btn btn-success">Login</button></a>
->>>>>>> e8cbe91b18ee45f44fc41b65fc9ef8033948e4ff
         <button type="submit" class="btn btn-danger">Logout</button>
       </form>
     </div><!-- /.navbar-collapse -->
@@ -98,123 +81,24 @@
        </div>
     </div>
     
-    
-    <script type="text/javascript">
-    	function validar_formulario(){
-    		var er_dni = /^([0-9]{8}[A-Z])$/;
-    		var er_tel = /^([6]|[9])([0-9]{8})$/;
-    		var er_correo = /^[a-z0-9]+(.[a-z0-9]+)*@[a-z0-9]+(.[a-z0-9]+)*(.[a-z]{2,3})$/;
-    		
-			//para validar el campo nombre
-			if(document.form.nombre.value.length == 0){
-				alert("Tiene que escribir su nombre");
-				document.form.nombre.focus();
-				return 0;
-			}
-
-			//para validar el campo apellidos
-			if(document.form.apellidos.value.length == 0){
-				alert("Tiene que escribir sus apellidos");
-				document.form.apellidos.focus();
-				return 0;
-			}
-
-			//para validar el campo fecha de nacimiento
-			if(document.form.fecha.value.length == 0){
-			  	alert("Introduzca una fecha de nacimiento");
-				document.form.fecha.focus();
-				return 0;
-			}
-			
-			//para validar el campo dni
-			if(!er_dni.test(document.form.dni.value)){
-				alert("Contenido del campo DNI no válido");
-				document.form.dni.focus();
-				return 0;
-			}
-			
-			//para validar el campo correo electronico
-			if(!er_correo.test(document.form.correo.value)){
-				alert("Contenido del campo correo electronico no válido");
-				document.form.correo.focus();
-				return 0;
-			}
-			
-			//para validar el campo del número de telefono
-			if(!er_tel.test(document.form.telefono.value)){
-				alert("Contenido del campo número de teléfono no válido");
-				document.form.telefono.focus();
-				return 0;
-			}
-			
-			//para validar el campo contraseña
-			if(document.form.contrasenia.value.length < 6){
-			  document.form.contrasenia.focus();
-				alert('Contenido del campo contraseña demasiado corto. La contraseña debe tener al menos 6 caracteres');
-				return false;
-			}
-
-			//para validar el campo repiticion de contraseña
-			if(document.form.contrasenia2.value != document.form.contrasenia.value){
-			  document.form.contrasenia2.focus();
-				alert('Las contraseñas no coinciden. Vuelva a introducir la contraseña');
-				return false;
-			}
-			
-			//enviamos el formulario
-			alert("Muchas gracias por enviar el formulario");
-			document.form.submit();
-		}
-	</script>
      <div style="margin-left:310px" class="col-xs-6 ">
           <div class="thumbnail">
     
             <h1>Formulario para registrar usuario</h1>
-<<<<<<< HEAD
-            <form name="form" enctype="text/plain"  > 
-              <fieldset>
-                <legend>Datos Personales</legend>
-                                
-                  <label for="nombre">Nombre: </label>
-                  <input type="text" name="nombre" value="{{datos['nombre']"}}/> <br><br>
-=======
             <form name="form" enctype="text/plain">
-              <fieldset>
-                <legend>Datos Personales</legend>
-                  <label for="nombre">Nombre: </label>
-                  <input type="text" name="nombre"/> <br><br>
->>>>>>> e8cbe91b18ee45f44fc41b65fc9ef8033948e4ff
-                  <label for="apellidos">Apellidos: </label>
-                  <input type="text" name="apellidos"/> <br><br>
-                  <label for="fecha">Fecha de nacimiento: </label>
-                  <input type="date" name="fecha" /> <br><br>
-                  <label for="dni">DNI: </label>
-                  <input type="text" name="dni" /> <br><br>
-<<<<<<< HEAD
-                  
-=======
->>>>>>> e8cbe91b18ee45f44fc41b65fc9ef8033948e4ff
-              </fieldset><br>
-              <fieldset>
-                <legend>Información de usuario</legend>
-                  <label for="correo">Correo electrónico: </label>
-                  <input type="email" name="correo"/> <br><br>
-                  <label for="telefono">Número de teléfono: </label>
-                  <input type="text" name="telefono"/> <br><br>
+             
+                
+                  <label for="usuario">Usuario: </label>
+                  <input type="text" name="usuario"/> <br><br>
+   
                   <label for="contrasenia">Contraseña: </label>
                   <input type="password" name="contrasenia" /> <br><br>
-                  <label for="contrasenia2">Repita la contraseña: </label>
-                  <input type="password" name="contrasenia2" /> <br><br>
-               </fieldset><br>
               <input type="button"id="boton1"value="Enviar datos" onclick="validar_formulario()"/>
-              <input type="reset"id="boton2"value="Borrar datos"/>
             </form>
           </div>
        </div>
 
-            <div class="col-lg-12 ">
-          <div class="thumbnail">
-          </div></div>
+            
      
     <script type="application/dart" src="Principal.dart"></script>
     <!-- for this next line to work, your pubspec.yaml file must have a dependency on 'browser' -->
