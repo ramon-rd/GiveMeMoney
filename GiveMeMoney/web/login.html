@@ -2,39 +2,14 @@
 
 <html>
   <head>
-    <meta charset="utf-8">
+  	<meta charset="utf-8">
     <title>GiveMeMoney</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    
-    
-    <!--graficas
-    
-    <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses'],
-          ['2004',  1000,      400],
-          ['2005',  1170,      460],
-          ['2006',  660,       1120],
-          ['2007',  1030,      540]
-        ]);
-
-        var options = {
-          title: 'Company Performance',
-          hAxis: {title: 'Year', titleTextStyle: {color: 'red'}}
-        };
-
-        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      }
-    </script>
-    -->
-    
   </head>
-  <body> 
-  <nav class="navbar navbar-inverse" role="navigation">
+ 
+  <body>   
+    
+      <nav class="navbar navbar-inverse" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -44,7 +19,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#" >GiveMeMoney </a>
+      <a class="navbar-brand" href="/GiveMeMoney/web/givememoney.html"> GiveMeMoney </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -85,8 +60,6 @@
     <!--<outline:none; margin-top: 5%;-->
 
   <h1>GiveMeMoney</h1>
-    
-    <p> </p>
     <div id="sample_container_id">
       <div class="row"></div>
         <div class="col-lg-12 ">
@@ -106,77 +79,31 @@
           </div>     
           </div>
        </div>
-      <div>
-        <div class="row"></div>
-        <div class="col-xs-16 col-md-8">
+    </div>
+    
+     <div style="margin-left:310px" class="col-xs-6 ">
           <div class="thumbnail">
-            <!--graficas-->
-              <h2>Gastos</h2>
-                <p>.....[Muestra espacio de gráfica]...</p>
-                <!--<div id="visualization" style="width: 600px; height: 400px;"></div>-->
-                <div class="list-group">
-                  <a href="#" class="list-group-item active">
-                    Opciones:
-                  </a>
-                  <a href="#" class="list-group-item">Consultar gráfica diaria</a>
-                  <a href="#" class="list-group-item">Consultar gráfica semanal</a>
-                  <a href="#" class="list-group-item">Consultar gráfica mensual</a>
-                  <a href="#" class="list-group-item">Consultar gráfica anual</a>
-                </div>
-           </div>
-         </div>
-      </div>
-      <div class="col-xs-6 col-md-4">
-          <div class="thumbnail">
-            <!--graficas-->
-              <h2>Perfil</h2>
-                <img src="images/fotos/castillo.jpg">
-                <p>.....[Muestra espacio de foto]...</p>
-                <div class="col-xs-6 col-md-12">
-                        <div class="thumbnail">
-                          <p><a href="#" class="btn btn-primary" role="button">Editar</a>   <a href="#" class="btn btn-primary" role="button">Guardar</a>   <a href="#" class="btn btn-primary" role="button">Añadir gastos</a></p>
-                          <h4>Nombre: </h4>
-                          <h4>Apellidos: </h4>
-                          <h4>Usuario: </h4>
-                          <h4>E-mail: </h4>
-                        </div>
-                  </div>      
-                  <div class="row">
-                    <div class="col-xs-6 col-md-12">
-                        <div class="thumbnail">
-                          <h2>Estadisticas</h2>
-                              <h3>Fecha</h3>
-                                <p>Descripción</p>
-                                <p>Descripción</p>
-                                <p>Descripción</p>
-                                <p>Descripción</p>
-                        </div>
-                    </div>
-                  </div>            
-         </div>
-      </div>    
-   </div>
-   
-   
-   
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-    <div class="item active">
-    </div>
-    </div>
-    </div>
     
-    
-       
+            <h1>Formulario para registrar usuario</h1>
+            <form name="form" enctype="text/plain">
+             
+                
+                  <label for="usuario">Usuario: </label>
+                  <input type="text" name="usuario"/> <br><br>
    
-   
-   
-<!--FOOTER--->
-    
-    <script type="application/dart" src="givememoney.dart"></script>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+                  <label for="contrasenia">Contraseña: </label>
+                  <input type="password" name="contrasenia" /> <br><br>
+              <input type="button"id="boton1"value="Enviar datos" onclick="validar_formulario()"/>
+            </form>
+          </div>
+       </div>
+
+            
+     
+    <script type="application/dart" src="Principal.dart"></script>
+    <!-- for this next line to work, your pubspec.yaml file must have a dependency on 'browser' -->
     <script src="packages/browser/dart.js"></script>
+    
     <footer class="panel-footer" role="navigation">
       <div class="container">
         <div class="col-sm-3">
@@ -243,10 +170,8 @@
            </tr>
          </table>
        </div>
-       <div style=""clear:both">
-       <p>Publicado bajo licencia GNU GENERAL PUBLIC LICENSE Version 3</p>
        </div>
-      </div><!-- ./container -->
+ <!-- ./container -->
     </footer>
     
   </body>
