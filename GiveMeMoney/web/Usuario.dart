@@ -2,6 +2,11 @@ library GiveMeMoney;
 
 import 'GastoDiario.dart';
 import 'Gasto.dart';
+//import 'package:sqljocky/sqljocky.dart';
+
+//import 'conectaMysql.dart';
+
+//ConnectionPool pool = new ConnectionPool(host: "localhost", port: 3306, user: "root", password: "09l09r88e", db: "givememoney", max:1);
 
 class Usuario
 {
@@ -68,10 +73,10 @@ class Usuario
       
     }
   }*/
-  void introducirGastos(num precio, String tipo)
+  void introducirGastos(Gasto nuevo_gasto)
   {
 
-    Gasto nuevo_gasto = new Gasto(precio,tipo);
+  //  Gasto nuevo_gasto = new Gasto(precio,tipo);
     
     GastoDiario gasto_aux = new GastoDiario();
     
@@ -132,6 +137,8 @@ class Usuario
   void nuevoIngreso (num ingreso)
   {
     this.saldo += ingreso;
+   // ManejaSQL aux = new ManejaSQL(pool);
+  //  aux.addData(this.saldo);
   }
  
 }

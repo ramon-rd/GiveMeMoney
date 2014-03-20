@@ -2,39 +2,14 @@
 
 <html>
   <head>
-    <meta charset="utf-8">
+  	<meta charset="utf-8">
     <title>GiveMeMoney</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    
-    
-    <!--graficas
-    
-    <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses'],
-          ['2004',  1000,      400],
-          ['2005',  1170,      460],
-          ['2006',  660,       1120],
-          ['2007',  1030,      540]
-        ]);
-
-        var options = {
-          title: 'Company Performance',
-          hAxis: {title: 'Year', titleTextStyle: {color: 'red'}}
-        };
-
-        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      }
-    </script>
-    -->
-    
   </head>
-  <body> 
-  <nav class="navbar navbar-inverse" role="navigation">
+ 
+  <body>   
+    
+      <nav class="navbar navbar-inverse" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -85,8 +60,6 @@
     <!--<outline:none; margin-top: 5%;-->
 
   <h1>GiveMeMoney</h1>
-    
-    <p> </p>
     <div id="sample_container_id">
       <div class="row"></div>
         <div class="col-lg-12 ">
@@ -106,77 +79,119 @@
           </div>     
           </div>
        </div>
-      <div>
-        <div class="row"></div>
-        <div class="col-xs-16 col-md-8">
+    </div>
+    
+    
+    <script type="text/javascript">
+    	function validar_formulario(){
+    		var er_dni = /^([0-9]{8}[A-Z])$/;
+    		var er_tel = /^([6]|[9])([0-9]{8})$/;
+    		var er_correo = /^[a-z0-9]+(.[a-z0-9]+)*@[a-z0-9]+(.[a-z0-9]+)*(.[a-z]{2,3})$/;
+    		
+			//para validar el campo nombre
+			if(document.form.nombre.value.length == 0){
+				alert("Tiene que escribir su nombre");
+				document.form.nombre.focus();
+				return 0;
+			}
+
+			//para validar el campo apellidos
+			if(document.form.apellidos.value.length == 0){
+				alert("Tiene que escribir sus apellidos");
+				document.form.apellidos.focus();
+				return 0;
+			}
+
+			//para validar el campo fecha de nacimiento
+			if(document.form.fecha.value.length == 0){
+			  	alert("Introduzca una fecha de nacimiento");
+				document.form.fecha.focus();
+				return 0;
+			}
+			
+			//para validar el campo dni
+			if(!er_dni.test(document.form.dni.value)){
+				alert("Contenido del campo DNI no válido");
+				document.form.dni.focus();
+				return 0;
+			}
+			
+			//para validar el campo correo electronico
+			if(!er_correo.test(document.form.correo.value)){
+				alert("Contenido del campo correo electronico no válido");
+				document.form.correo.focus();
+				return 0;
+			}
+			
+			//para validar el campo del número de telefono
+			if(!er_tel.test(document.form.telefono.value)){
+				alert("Contenido del campo número de teléfono no válido");
+				document.form.telefono.focus();
+				return 0;
+			}
+			
+			//para validar el campo contraseña
+			if(document.form.contrasenia.value.length < 6){
+			  document.form.contrasenia.focus();
+				alert('Contenido del campo contraseña demasiado corto. La contraseña debe tener al menos 6 caracteres');
+				return false;
+			}
+
+			//para validar el campo repiticion de contraseña
+			if(document.form.contrasenia2.value != document.form.contrasenia.value){
+			  document.form.contrasenia2.focus();
+				alert('Las contraseñas no coinciden. Vuelva a introducir la contraseña');
+				return false;
+			}
+			
+			//enviamos el formulario
+			alert("Muchas gracias por enviar el formulario");
+			document.form.submit();
+		}
+	</script>
+     <div style="margin-left:310px" class="col-xs-6 ">
           <div class="thumbnail">
-            <!--graficas-->
-              <h2>Gastos</h2>
-                <p>.....[Muestra espacio de gráfica]...</p>
-                <!--<div id="visualization" style="width: 600px; height: 400px;"></div>-->
-                <div class="list-group">
-                  <a href="#" class="list-group-item active">
-                    Opciones:
-                  </a>
-                  <a href="#" class="list-group-item">Consultar gráfica diaria</a>
-                  <a href="#" class="list-group-item">Consultar gráfica semanal</a>
-                  <a href="#" class="list-group-item">Consultar gráfica mensual</a>
-                  <a href="#" class="list-group-item">Consultar gráfica anual</a>
-                </div>
-           </div>
-         </div>
-      </div>
-      <div class="col-xs-6 col-md-4">
+    
+            <h1>Formulario para registrar usuario</h1>
+            <form name="form" enctype="text/plain"  > 
+              <fieldset>
+                <legend>Datos Personales</legend>
+                                
+                  <label for="nombre">Nombre: </label>
+                  <input type="text" name="nombre" value="{{datos['nombre']"}}/> <br><br>
+                  <label for="apellidos">Apellidos: </label>
+                  <input type="text" name="apellidos"/> <br><br>
+                  <label for="fecha">Fecha de nacimiento: </label>
+                  <input type="date" name="fecha" /> <br><br>
+                  <label for="dni">DNI: </label>
+                  <input type="text" name="dni" /> <br><br>
+                  
+              </fieldset><br>
+              <fieldset>
+                <legend>Información de usuario</legend>
+                  <label for="correo">Correo electrónico: </label>
+                  <input type="email" name="correo"/> <br><br>
+                  <label for="telefono">Número de teléfono: </label>
+                  <input type="text" name="telefono"/> <br><br>
+                  <label for="contrasenia">Contraseña: </label>
+                  <input type="password" name="contrasenia" /> <br><br>
+                  <label for="contrasenia2">Repita la contraseña: </label>
+                  <input type="password" name="contrasenia2" /> <br><br>
+               </fieldset><br>
+              <input type="button"id="boton1"value="Enviar datos" onclick="validar_formulario()"/>
+              <input type="reset"id="boton2"value="Borrar datos"/>
+            </form>
+          </div>
+       </div>
+
+            <div class="col-lg-12 ">
           <div class="thumbnail">
-            <!--graficas-->
-              <h2>Perfil</h2>
-                <img src="images/fotos/castillo.jpg">
-                <p>.....[Muestra espacio de foto]...</p>
-                <div class="col-xs-6 col-md-12">
-                        <div class="thumbnail">
-                          <p><a href="#" class="btn btn-primary" role="button">Editar</a>   <a href="#" class="btn btn-primary" role="button">Guardar</a>   <a href="#" class="btn btn-primary" role="button">Añadir gastos</a></p>
-                          <h4>Nombre: </h4>
-                          <h4>Apellidos: </h4>
-                          <h4>Usuario: </h4>
-                          <h4>E-mail: </h4>
-                        </div>
-                  </div>      
-                  <div class="row">
-                    <div class="col-xs-6 col-md-12">
-                        <div class="thumbnail">
-                          <h2>Estadisticas</h2>
-                              <h3>Fecha</h3>
-                                <p>Descripción</p>
-                                <p>Descripción</p>
-                                <p>Descripción</p>
-                                <p>Descripción</p>
-                        </div>
-                    </div>
-                  </div>            
-         </div>
-      </div>    
-   </div>
-   
-   
-   
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-    <div class="item active">
-    </div>
-    </div>
-    </div>
-    
-    
-       
-   
-   
-   
-<!--FOOTER--->
-    
-    <script type="application/dart" src="givememoney.dart"></script>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+          </div></div>
+     
+    <script type="application/dart" src="Principal.dart"></script>
+    <!-- for this next line to work, your pubspec.yaml file must have a dependency on 'browser' -->
     <script src="packages/browser/dart.js"></script>
+    
     <footer class="panel-footer" role="navigation">
       <div class="container">
         <div class="col-sm-3">
@@ -243,10 +258,8 @@
            </tr>
          </table>
        </div>
-       <div style=""clear:both">
-       <p>Publicado bajo licencia GNU GENERAL PUBLIC LICENSE Version 3</p>
        </div>
-      </div><!-- ./container -->
+ <!-- ./container -->
     </footer>
     
   </body>
