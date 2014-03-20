@@ -1,4 +1,3 @@
-
 import 'package:sqljocky/sqljocky.dart';
 import 'package:sqljocky/utils.dart';
 
@@ -7,8 +6,6 @@ import 'dart:async';
 import 'GastoDiario.dart';
 
 
-
->>>>>>> e8cbe91b18ee45f44fc41b65fc9ef8033948e4ff
 
 class ManejaSQL {
   
