@@ -1,15 +1,11 @@
-<<<<<<< HEAD
-//library GiveMeMoney;
 
-=======
->>>>>>> e8cbe91b18ee45f44fc41b65fc9ef8033948e4ff
 import 'package:sqljocky/sqljocky.dart';
 import 'package:sqljocky/utils.dart';
 
 import 'dart:async';
-<<<<<<< HEAD
+
 import 'GastoDiario.dart';
-=======
+
 
 
 >>>>>>> e8cbe91b18ee45f44fc41b65fc9ef8033948e4ff
@@ -22,10 +18,7 @@ class ManejaSQL {
   
   Future run() {
     var completer = new Completer();
-<<<<<<< HEAD
-    
-    addData(num).then((_) {
-=======
+
 
     dropTables().then((_) {
       print("dropped tables");
@@ -37,7 +30,7 @@ class ManejaSQL {
       return addData();
     }).then((_) {
       // and read it back out
->>>>>>> e8cbe91b18ee45f44fc41b65fc9ef8033948e4ff
+
       return readData();
     }).then((_) {
       completer.complete(null);
@@ -71,7 +64,7 @@ class ManejaSQL {
     return querier.executeQueries();
   }
   
-<<<<<<< HEAD
+
   Future addDataIngreso(valor, fecha) {
 
       var completer = new Completer();
@@ -270,6 +263,4 @@ void main() {
   });
 <<<<<<< HEAD
 }*/
-=======
-}
->>>>>>> e8cbe91b18ee45f44fc41b65fc9ef8033948e4ff
+
