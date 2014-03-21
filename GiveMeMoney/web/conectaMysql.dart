@@ -3,6 +3,8 @@ import 'package:sqljocky/utils.dart';
 
 import 'dart:async';
 
+import 'GastoDiario.dart';
+
 
 
 class ManejaSQL {
@@ -14,6 +16,7 @@ class ManejaSQL {
   Future run() {
     var completer = new Completer();
 
+
     dropTables().then((_) {
       print("dropped tables");
       // then recreate the tables
@@ -24,6 +27,7 @@ class ManejaSQL {
       return addData();
     }).then((_) {
       // and read it back out
+
       return readData();
     }).then((_) {
       completer.complete(null);
@@ -57,6 +61,112 @@ class ManejaSQL {
     return querier.executeQueries();
   }
   
+
+  Future addDataIngreso(valor, fecha) {
+
+      var completer = new Completer();
+      pool.prepare("insert into ingreso (valor, fecha_ingreso) values (?, ?)").then((query){
+      print("Preparando consulta insertar ingreso...");
+      var parameters = [
+            [valor, fecha]];
+      return query.executeMulti(parameters);
+    }).then((results) {
+      print("Ejecutar consulta (insertar ingreso)");
+      completer.complete(null);
+    });
+      print("insertado");
+      
+      return completer.future;
+      
+    }
+  
+  
+  Future addData(saldo_nuevo) {
+    
+    var completer = new Completer();
+    pool.prepare("insert into usuario (saldo) values (?)").then((query){
+    print("Preparando consulta insertar usuario...");
+    var parameters = [
+          [saldo_nuevo]];
+    return query.executeMulti(parameters);
+  }).then((results) {
+    print("Ejecutar consulta (insertar)");
+    completer.complete(null);
+  });
+    print("insertado");
+    return completer.future;
+    
+  }
+  
+  //para introducir un gasto en una categoría determinada
+  /*Future addGastoDeterminado(gasto) {
+    
+    var completer = new Completer();
+    
+    if(gasto.getCategoria() == 'Ocio'){
+      pool.prepare("insert into ocio (valor) values (?)").then((query){
+        print("Preparando consulta insertar usuario...");
+            var parameters = [
+                  [gasto.getGasto()]];
+            return query.executeMulti(parameters);
+          }).then((results) {
+            print("Ejecutar consulta (insertar)");
+            completer.complete(null);
+          });
+            print("insertado");
+            return completer.future;
+    }
+    
+    if(gasto.getCategoria() == 'Viajes'){
+          pool.prepare("insert into viajes (valor) values (?)").then((query){
+            print("Preparando consulta insertar usuario...");
+                var parameters = [
+                      [gasto.getGasto()]];
+                return query.executeMulti(parameters);
+              }).then((results) {
+                print("Ejecutar consulta (insertar)");
+                completer.complete(null);
+              });
+                print("insertado");
+                return completer.future;
+        } 
+}*/
+  
+  Future addDataCategoria(valor, fecha, categoria) {
+
+      var completer = new Completer();
+      pool.prepare("insert into $categoria (valor, fecha) values (?, ?)").then((query){
+      print("Preparando consulta insertar gasto en categoria...");
+      var parameters = [
+            [valor, fecha]];
+      return query.executeMulti(parameters);
+    }).then((results) {
+      print("Ejecutar consulta (insertar $categoria)");
+      completer.complete(null);
+    });
+      print("insertado");
+      return completer.future;
+      
+}  
+  
+  Future readData() {
+    var completer = new Completer();
+    print ("querying");
+    return pool.query('select * from usuario').then((result) {
+          print("Resultados: ");
+          return result.forEach((row) {
+            String aux = row[0];
+            print(aux);
+            //nuevoIngreso(row[1]);
+            print("nombre_user: ${row[0]}");
+            return aux;
+          });
+        });
+  }
+}
+
+/*
+=======
   Future addData() {
     var completer = new Completer();
     pool.prepare("insert into people (name, age) values (?, ?)").then((query) {
@@ -104,11 +214,22 @@ class ManejaSQL {
 }
 
 
+>>>>>>> e8cbe91b18ee45f44fc41b65fc9ef8033948e4ff
 
 void main() {
 
   //Configuración
   
+<<<<<<< HEAD
+      String user = "root";
+      String password = "09l09r88e";
+      int port = 3306;
+      String db = "givememoney";
+      String host = "localhost";
+      print("Configuración aceptada");
+      
+//ConnectionPool pool = new ConnectionPool(host: "localhost", port: 3306, user: "root", password: "09l09r88e", db: "givememoney", max:1);
+=======
       String user = "pepe";
       String password = "1234";
       int port = 3306;
@@ -117,6 +238,7 @@ void main() {
       print("hola");
       
   //
+>>>>>>> e8cbe91b18ee45f44fc41b65fc9ef8033948e4ff
 
   print("opening connection");
   var pool = new ConnectionPool(host: host, port: port, user: user, password: password, db: db, max:1);
@@ -126,10 +248,16 @@ void main() {
   var example = new ManejaSQL(pool);
 
   print("running example");
+<<<<<<< HEAD
+  example.run().then((_) {
+=======
  example.run().then((_) {
+>>>>>>> e8cbe91b18ee45f44fc41b65fc9ef8033948e4ff
 
    
     print("K THNX BYE!");
     pool.close();
   });
-}
+<<<<<<< HEAD
+}*/
+
