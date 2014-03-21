@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  	<meta charset="utf-8">
+    <title>GiveMeMoney</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+  </head>
+ 
+  <body>   
+    <p id="text">jniohlobh</p>
+    <p>adñofjasod</p>
+    <p id="RipVanWinkle">
+      RipVanWinkle paragraph.
+    </p>
+    <script type="text/javascript">
+    	function validar_formulario(formulario){
+    		var er_dni = /^([0-9]{8}[A-Z])$/;
+    		var er_tel = /^([6]|[9])([0-9]{8})$/;
+    		var er_correo = /^[a-z0-9]+(.[a-z0-9]+)*@[a-z0-9]+(.[a-z0-9]+)*(.[a-z]{2,3})$/;
+    		
+			//para validar el campo nombre
+			if(formulario.nombre.value.length == 0){
+				alert("Tiene que escribir su nombre");
+				formulario.nombre.focus();
+				return false;
+			}
+
+			//para validar el campo apellidos
+			if(formulario.apellidos.value.length == 0){
+				alert("Tiene que escribir sus apellidos");
+				formulario.apellidos.focus();
+				return false;
+			}
+
+			//para validar el campo fecha de nacimiento
+			if(formulario.fecha.value.length == 0){
+			  	alert("Introduzca una fecha de nacimiento");
+			  	formulario.fecha.focus();
+				return false;
+			}
+			
+			//para validar el campo dni
+			if(!er_dni.test(formulario.dni.value)){
+				alert("Contenido del campo DNI no válido");
+				formulario.dni.focus();
+				return false;
+			}
+			
+			//para validar el campo correo electronico
+			if(!er_correo.test(formulario.correo.value)){
+				alert("Contenido del campo correo electronico no válido");
+				formulario.correo.focus();
+				return false;
+			}
+			
+			//para validar el campo del número de telefono
+			if(!er_tel.test(formulario.telefono.value)){
+				alert("Contenido del campo número de teléfono no válido");
+				formulario.telefono.focus();
+				return false;
+			}
+			
+			//para validar el campo contraseña
+			if(formulario.contrasenia.value.length < 6){
+			  formulario.contrasenia.focus();
+				alert('Contenido del campo contraseña demasiado corto. La contraseña debe tener al menos 6 caracteres');
+				return false;
+			}
+
+			//para validar el campo repiticion de contraseña
+			if(formulario.contrasenia2.value != formulario.contrasenia.value){
+			  formulario.contrasenia2.focus();
+				alert('Las contraseñas no coinciden. Vuelva a introducir la contraseña');
+				return false;
+			}
+			
+			return true;
+		}
+	</script>
+    
+    <h1>Formulario para registrar usuario</h1>
+    <form action="/GiveMeMoney/web/Procesar.html" method="post" onsubmit="return validar_formulario(this);">
+      <fieldset>
+        <legend>Datos Personales</legend>
+          <label for="nombre">Nombre: </label>
+          <input type="text" name="nombre" value="paos"/> <br><br>
+          <label for="apellidos">Apellidos: </label>
+          <input type="text" name="apellidos"/> <br><br>
+          <label for="fecha">Fecha de nacimiento: </label>
+          <input type="date" name="fecha" /> <br><br>
+          <label for="dni">DNI: </label>
+          <input type="text" name="dni" /> <br><br>
+      </fieldset><br>
+      <fieldset>
+        <legend>Información de usuario</legend>
+          <label for="correo">Correo electrónico: </label>
+          <input type="email" name="correo"/> <br><br>
+          <label for="telefono">Número de teléfono: </label>
+          <input type="text" name="telefono"/> <br><br>
+          <label for="contrasenia">Contraseña: </label>
+          <input type="password" name="contrasenia" /> <br><br>
+          <label for="contrasenia2">Repita la contraseña: </label>
+          <input type="password" name="contrasenia2" /> <br><br>
+       </fieldset><br>
+      <input type="submit"id="boton1"value="Enviar datos"/>
+      <input type="reset"id="boton2"value="Borrar datos"/>
+    </form>
+    <!--<form action="POST">
+      <p>Nombre: <input type="text" name="name_control" autofocus required /></p>
+      <p>Apellidos: <input type="text" name="name_control" autofocus required /></p>
+      <p>DNI: <input type="text" name="name_control" autofocus required /></p>
+      <p>Contraseña: <input type="text" name="name_control" autofocus required /></p>
+      <p>Repita su contraseña: <input type="text" name="name_control" autofocus required /></p>
+      <p>Correo Electrónico: <input type="email" name="email_control" autofocus required /></p>
+      <p>Fecha de Nacimiento: <input type="date" name="date_control" autofocus required /></p>
+      <p>Saldo Inicial: <input type="text" name="name_control" autofocus required /></p>
+      <input type="submit" value="Enviar datos" />
+    </form>-->
+     
+    <script type="application/dart" src="Principal.dart"></script>
+    <!-- for this next line to work, your pubspec.yaml file must have a dependency on 'browser' -->
+    <script src="packages/browser/dart.js"></script>
+  </body>
+</html>
