@@ -5,7 +5,7 @@ import 'Gasto.dart';
 
 class GastoDiario{
   
-  List<Gasto> gastosRealizados; //¿sobra?
+  //List<Gasto> gastosRealizados; //¿sobra?
   List<Gasto> totales;
   num total;
   DateTime fecha;
@@ -15,7 +15,7 @@ class GastoDiario{
     /* Establece la fecha en la que se introdujo el gasto. */
     this.total = 0;
     this.fecha = new DateTime.now();
-    this.gastosRealizados = new List<Gasto>();
+  //  this.gastosRealizados = new List<Gasto>();
     this.totales = new List<Gasto>();
     
     /* Inicializar los gastos totales */
@@ -43,29 +43,40 @@ class GastoDiario{
     this.fecha = fechaEntrada;
   }
   void setGastos(List<Gasto> gastosEntrada){
-    this.gastosRealizados = gastosEntrada;
+    //this.gastosRealizados = gastosEntrada;
+    this.totales = gastosEntrada;
   }
   /* Getters. */
   DateTime getFecha(){
     return this.fecha;
   }
-  void getGastosRealizados(){
+  Num getTotal(){
+    return this.total;
+  }
+  /*void getGastosRealizados(){
    // return this.totales; //cambiado
-    print("hola");
     for (int i = 0; i < this.totales.length; i++)
       print(this.totales.elementAt(i).valor);
+  }*/
+  List getGastosRealizados(){
+    List<Gasto> gastosRealizados = new List<Gasto>();
+    
+    for (int i = 0; i < this.totales.length; i++){
+      gastosRealizados.add(totales.elementAt(i));
+     // print(totales.elementAt(i));
+    }
+    
+    return gastosRealizados;
   }
  
   /* Añadir un gasto al total diario. =) */
   void aniadirGasto(Gasto gasto){
-    print("pepe");
     /* Determinar si el gasto es correcto para añadirlo. */
     if(gasto.valor == null || gasto.valor <= 0){
       print("Un gasto nulo, negativo o 0 no se considera gasto.");
     }
     else{
       // Esto podría hacerse accediendo directamente al índice de la categoría.
-      print("entro");
       for(int i=0; i < this.totales.length; i++){
         /* Si coinciden las categorías, acumular el gasto en dicha categoría. */
         if(gasto.getCategoria() == totales.elementAt(i).getCategoria()){
@@ -85,9 +96,5 @@ class GastoDiario{
     }
     return total;
   } 
-  void saluda()
-  {
-    print("Hola");
-  }
   
 }

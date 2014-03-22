@@ -40,6 +40,11 @@ class Principal{
 
 void main(){
     
+    DateTime hoy = new DateTime.now();
+    
+  /*  int dia = hoy.day;
+    while (dia == hoy.day)
+      print("hola");*/
     Usuario nuevo = new Usuario("Ramón","Rueda","12345678R", "2565985ejri", 50.0);
    
     nuevo.mostrarDatos();
@@ -52,7 +57,7 @@ void main(){
     nuevo.introducirGastos(3,"Ocio");
     nuevo.introducirGastos(5,"Viajes");
     nuevo.consultarGastos();
-    num dinero = nuevo.saldoRestante();
-    print (dinero);
+   // num dinero = nuevo.saldoRestante();
+    //print (dinero);
   //  print (b);
   }

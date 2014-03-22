@@ -2,6 +2,7 @@ library GiveMeMoney;
 
 import 'GastoDiario.dart';
 import 'Gasto.dart';
+import 'dart:math';
 
 class Usuario
 {
@@ -75,7 +76,6 @@ class Usuario
     
     GastoDiario gasto_aux = new GastoDiario();
     
-    
     gasto_aux.aniadirGasto(nuevo_gasto);
     
     this.saldo = this.saldo-nuevo_gasto.valor;
@@ -86,7 +86,13 @@ class Usuario
   
   void consultarGastos()
   {  
-    gasto_semanal.elementAt(1).getGastosRealizados();
+    //gasto_semanal.elementAt(1).getGastosRealizados();
+    List<Gasto> aux = new List<Gasto>();
+    aux = gasto_semanal.elementAt(0).getGastosRealizados();
+    
+    for (int i = 0; i < aux.length; i++){
+      print(aux.elementAt(i).categoria /*+ aux.elementAt(i).valor*/);
+    }
   }
   
   num saldoRestante()
@@ -125,13 +131,21 @@ class Usuario
     
     return media;
   }
- /* num gastoMedioMensual ()
+  num desviacionTipicaSemanal ()
   {
+    num media = gastoMedioSemanal();
+    num aux = 0;
+    for (int i = 0; i < gasto_semanal.length; i++){
+      aux += (gasto_semanal.elementAt(i).total-media)*(gasto_semanal.elementAt(i).total-media);
+    }
+    aux = aux/gasto_semanal.length;
+    num res = sqrt(aux);
     
-  }*/
+    return res;
+  }
   void nuevoIngreso (num ingreso)
   {
     this.saldo += ingreso;
   }
- 
+
 }
