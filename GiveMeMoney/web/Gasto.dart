@@ -17,14 +17,17 @@ class Gasto{
   }
   /* Setters // Getters. */
   /* Setters. */
-  void setGasto(num valorGasto){ 
+/*  void setGasto(num valorGasto){ 
     this.valor = valorGasto;   
   }
   void setOpcion(String tipoCategoria){
     this.categoria = tipoCategoria;
-  }
-  void setClave(){
-    
+  }*/
+  //En lugar de tener dos métodos para añadir por separado, sería mejor un solo método para introducir la pareja...
+  void setGastoCategoria (num valorGasto, String tipoCategoria)
+  {
+    this.valor = valorGasto;
+    this.categoria = tipoCategoria;
   }
   /* Getters. */
   num getGasto(){

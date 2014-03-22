@@ -50,7 +50,7 @@ class GastoDiario{
   DateTime getFecha(){
     return this.fecha;
   }
-  Num getTotal(){
+  num getTotal(){
     return this.total;
   }
   /*void getGastosRealizados(){
@@ -68,6 +68,12 @@ class GastoDiario{
     
     return gastosRealizados;
   }
+  //con este método se arregla el problema a la hora de añadir gastos, no lo actualizábamos
+  //y a causa de esto luego no se calculaba bien la media...
+  void actualizarGastoDiario (num precio)
+  {
+    this.total += precio;
+  }
  
   /* Añadir un gasto al total diario. =) */
   void aniadirGasto(Gasto gasto){
@@ -81,6 +87,7 @@ class GastoDiario{
         /* Si coinciden las categorías, acumular el gasto en dicha categoría. */
         if(gasto.getCategoria() == totales.elementAt(i).getCategoria()){
           totales.elementAt(i).aumentarGasto(gasto.getGasto());
+          actualizarGastoDiario(gasto.getGasto());
         }
       }
     }

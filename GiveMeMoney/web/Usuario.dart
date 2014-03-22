@@ -69,29 +69,34 @@ class Usuario
       
     }
   }*/
-  void introducirGastos(num precio, String tipo)
+  void introducirGastos(List<num> precio, List<String> tipo)
   {
-
-    Gasto nuevo_gasto = new Gasto(precio,tipo);
-    
+    List<Gasto> nuevo_gasto = new List<Gasto>();
+    for(int i = 0; i < precio.length; i++){
+      Gasto g_aux = new Gasto(precio.elementAt(i),tipo.elementAt(i));
+      g_aux.setGastoCategoria(precio.elementAt(i), tipo.elementAt(i));
+      nuevo_gasto.add(g_aux);
+      
+    }
+    // Gasto nuevo_gasto = new Gasto(precio,tipo);
     GastoDiario gasto_aux = new GastoDiario();
     
-    gasto_aux.aniadirGasto(nuevo_gasto);
-    
-    this.saldo = this.saldo-nuevo_gasto.valor;
-    print(this.saldo);
+    for (int i = 0; i < nuevo_gasto.length; i++){
+      gasto_aux.aniadirGasto(nuevo_gasto.elementAt(i));
+     this.saldo = this.saldo-nuevo_gasto.elementAt(i).valor;
+    }
     
     gasto_semanal.add(gasto_aux);
   }
   
   void consultarGastos()
   {  
-    //gasto_semanal.elementAt(1).getGastosRealizados();
     List<Gasto> aux = new List<Gasto>();
     aux = gasto_semanal.elementAt(0).getGastosRealizados();
     
     for (int i = 0; i < aux.length; i++){
-      print(aux.elementAt(i).categoria /*+ aux.elementAt(i).valor*/);
+      print(aux.elementAt(i).getCategoria()+":");
+      print(aux.elementAt(i).getGasto());
     }
   }
   
