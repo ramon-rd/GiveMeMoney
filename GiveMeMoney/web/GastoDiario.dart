@@ -5,7 +5,6 @@ import 'Gasto.dart';
 
 class GastoDiario{
   
-  //List<Gasto> gastosRealizados; //¿sobra?
   List<Gasto> totales;
   num total;
   DateTime fecha;
@@ -63,7 +62,6 @@ class GastoDiario{
     
     for (int i = 0; i < this.totales.length; i++){
       gastosRealizados.add(totales.elementAt(i));
-     // print(totales.elementAt(i));
     }
     
     return gastosRealizados;

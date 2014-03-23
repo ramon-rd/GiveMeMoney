@@ -66,6 +66,9 @@ void main(){
     num media = nuevo.gastoMedioSemanal();
     print ("La media del gasto semanal en € es: ");
     print (media);
+    num desviacion = nuevo.desviacionTipicaSemanal();
+    print ("La desviación típica es: ");
+    print (desviacion);
    // num dinero = nuevo.saldoRestante();
     //print (dinero);
   //  print (b);
