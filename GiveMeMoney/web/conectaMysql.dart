@@ -54,57 +54,22 @@ class ManejaSQL {
     }
   
   
-  Future addData(saldo_nuevo) {
+  Future addData(saldo_nuevo,nombre) {
     
     var completer = new Completer();
-    pool.prepare("insert into usuario (saldo) values (?)").then((query){
+    pool.query('update usuario set saldo="$saldo_nuevo" where nombre_user="$nombre"').then((query){
     print("Preparando consulta insertar usuario...");
-    var parameters = [
-          [saldo_nuevo]];
-    return query.executeMulti(parameters);
+  /*  return query.executeMulti(parameters);
   }).then((results) {
     print("Ejecutar consulta (insertar)");
-    completer.complete(null);
+    completer.complete(null);*/
   });
-    print("insertado");
+  /*  print("insertado");
+    return completer.future;*/
     return completer.future;
     
   }
-  
-  //para introducir un gasto en una categoría determinada
-  /*Future addGastoDeterminado(gasto) {
-    
-    var completer = new Completer();
-    
-    if(gasto.getCategoria() == 'Ocio'){
-      pool.prepare("insert into ocio (valor) values (?)").then((query){
-        print("Preparando consulta insertar usuario...");
-            var parameters = [
-                  [gasto.getGasto()]];
-            return query.executeMulti(parameters);
-          }).then((results) {
-            print("Ejecutar consulta (insertar)");
-            completer.complete(null);
-          });
-            print("insertado");
-            return completer.future;
-    }
-    
-    if(gasto.getCategoria() == 'Viajes'){
-          pool.prepare("insert into viajes (valor) values (?)").then((query){
-            print("Preparando consulta insertar usuario...");
-                var parameters = [
-                      [gasto.getGasto()]];
-                return query.executeMulti(parameters);
-              }).then((results) {
-                print("Ejecutar consulta (insertar)");
-                completer.complete(null);
-              });
-                print("insertado");
-                return completer.future;
-        } 
-}*/
-  
+   
   Future addDataCategoria(valor, fecha, categoria) {
 
       var completer = new Completer();
@@ -122,115 +87,28 @@ class ManejaSQL {
       
 }  
   
-  Future readData() {
+  Future readData(nombre) {
+    
     var completer = new Completer();
-    print ("querying");
-    return pool.query('select * from usuario').then((result) {
-          print("Resultados: ");
-          return result.forEach((row) {
-            String aux = row[0];
-            print(aux);
-            //nuevoIngreso(row[1]);
-            print("nombre_user: ${row[0]}");
-            return aux;
-          });
-        });
-  }
-}
-
-/*
-=======
-  Future addData() {
-    var completer = new Completer();
-    pool.prepare("insert into people (name, age) values (?, ?)").then((query) {
-      print("prepared query 1");
-      var parameters = [
-          ["Dave", 15],
-          ["John", 16],
-          ["Mavis", 93]
-        ];
-      return query.executeMulti(parameters);
-    }).then((results) {
-      print("executed query 1");
-      return pool.prepare("insert into pets (name, species, owner_id) values (?, ?, ?)");
-    }).then((query) {
-      print("prepared query 2");
-      var parameters = [
-          ["Rover", "Dog", 1],
-          ["Daisy", "Cow", 2],
-          ["Spot", "Dog",  2]];
-//          ["Spot", "D\u0000og", 2]];
-      return query.executeMulti(parameters);
-    }).then((results) {
-      print("executed query 2");
-      completer.complete(null);
-    });
-    return completer.future;
-  }
-  
-  Future readData() {
-    var completer = new Completer();
-    print("querying");
-    return pool.query('select p.id, p.name, p.age, t.name, t.species '
-        'from people p '
-        'left join pets t on t.owner_id = p.id').then((result) {
-      print("got results");
-      return result.forEach((row) {
-        if (row[3] == null) {
-          print("ID: ${row[0]}, Name: ${row[1]}, Age: ${row[2]}, No Pets");
-        } else {
-          print("ID: ${row[0]}, Name: ${row[1]}, Age: ${row[2]}, Pet Name: ${row[3]}, Pet Species ${row[4]}");
-        }
-      });
-    });
+       print("querying");
+       return pool.query('select saldo '
+           'from usuario u '
+           'where u.nombre_user = "$nombre"').then((result) {
+           //  print(result.elementAt(4));
+             
+         return result.forEach((row) {
+           print("Saldo: ${row[0]}");
+         /*
+           if (row[3] == null) {
+             print("ID: ${row[0]}, Name: ${row[1]}, Age: ${row[2]}, No Pets");
+           } else {
+             print("ID: ${row[0]}, Name: ${row[1]}, Age: ${row[2]}, Pet Name: ${row[3]}, Pet Species ${row[4]}");
+           }*/
+         });
+       });
+    
   }
 }
 
 
->>>>>>> e8cbe91b18ee45f44fc41b65fc9ef8033948e4ff
-
-void main() {
-
-  //Configuración
-  
-<<<<<<< HEAD
-      String user = "root";
-      String password = "09l09r88e";
-      int port = 3306;
-      String db = "givememoney";
-      String host = "localhost";
-      print("Configuración aceptada");
-      
-//ConnectionPool pool = new ConnectionPool(host: "localhost", port: 3306, user: "root", password: "09l09r88e", db: "givememoney", max:1);
-=======
-      String user = "pepe";
-      String password = "1234";
-      int port = 3306;
-      String db = "test";
-      String host = "localhost";
-      print("hola");
-      
-  //
->>>>>>> e8cbe91b18ee45f44fc41b65fc9ef8033948e4ff
-
-  print("opening connection");
-  var pool = new ConnectionPool(host: host, port: port, user: user, password: password, db: db, max:1);
-  print("connection open");
-
-  
-  var example = new ManejaSQL(pool);
-
-  print("running example");
-<<<<<<< HEAD
-  example.run().then((_) {
-=======
- example.run().then((_) {
->>>>>>> e8cbe91b18ee45f44fc41b65fc9ef8033948e4ff
-
-   
-    print("K THNX BYE!");
-    pool.close();
-  });
-<<<<<<< HEAD
-}*/
 

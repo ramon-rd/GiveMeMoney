@@ -34,7 +34,7 @@ void main(){
     nuevo.recordarPassword();
     nuevo.cambiarPass("12aa54");
     nuevo.recordarPassword();
-    nuevo.setLogin("Ramonchu");
+    nuevo.setLogin("Luisre");
   //  nuevo.mostrarAlumno();
  //   Gasto a(3,"pan");
     List<num> dinero = new List<num>();
@@ -55,7 +55,11 @@ void main(){
    // num dinero = nuevo.saldoRestante();
     //print (dinero);
   //  print (b);
-    
-    example.addDataIngreso(3, hoy);
+    String nombre = nuevo.getLogin();
+    print(nombre);
+    //example.addDataIngreso(3, hoy);
+    example.addData(150,nombre);
+    example.readData(nombre);
+ 
     
   }
