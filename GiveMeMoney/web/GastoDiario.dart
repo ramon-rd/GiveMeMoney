@@ -1,6 +1,5 @@
 library GiveMeMoney;
 
-//part 'Gasto.dart';
 import 'Gasto.dart';
 
 class GastoDiario{
@@ -52,11 +51,7 @@ class GastoDiario{
   num getTotal(){
     return this.total;
   }
-  /*void getGastosRealizados(){
-   // return this.totales; //cambiado
-    for (int i = 0; i < this.totales.length; i++)
-      print(this.totales.elementAt(i).valor);
-  }*/
+
   List getGastosRealizados(){
     List<Gasto> gastosRealizados = new List<Gasto>();
     

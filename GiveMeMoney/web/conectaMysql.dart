@@ -2,7 +2,6 @@ import 'package:sqljocky/sqljocky.dart';
 import 'package:sqljocky/utils.dart';
 
 import 'dart:async';
-
 import 'GastoDiario.dart';
 
 
@@ -35,32 +34,6 @@ class ManejaSQL {
     return completer.future;
   }
 
-  Future dropTables() {
-    print("dropping tables");
-    var dropper = new TableDropper(pool, ['pets', 'people']);
-    return dropper.dropTables();
-  }
-  
-  
- 
-  Future createTables() {
-    print("creating tables");
-    var querier = new QueryRunner(pool, ['create table people (id integer not null auto_increment, '
-                                        'name varchar(255), '
-                                        'age integer, '
-                                        'primary key (id))',
-                                        
-                                        'create table pets (id integer not null auto_increment, '
-                                        'name varchar(255), '
-                                        'species text, '
-                                        'owner_id integer, '
-                                        'primary key (id),'
-                                        'foreign key (owner_id) references people (id))'
-                                        ]);
-    print("executing queries");
-    return querier.executeQueries();
-  }
-  
 
   Future addDataIngreso(valor, fecha) {
 

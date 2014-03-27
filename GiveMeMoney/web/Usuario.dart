@@ -62,13 +62,7 @@ class Usuario
   String getPassword(){
     return this.password;
   }
-  /*
-  void cerrarGasto(){
-    
-    if(gasto_diario.elementAt(0).getFecha().hour == 23 && gasto_diario.elementAt(0).getFecha().minute > 59){
-      
-    }
-  }*/
+
   void introducirGastos(List<num> precio, List<String> tipo)
   {
     List<Gasto> nuevo_gasto = new List<Gasto>();
