@@ -1,9 +1,10 @@
 import 'package:sqljocky/sqljocky.dart';
 import 'package:sqljocky/utils.dart';
-
 import 'dart:async';
 import 'GastoDiario.dart';
-
+import 'dart:io';
+import 'dart:convert';
+import 'package:http_server/http_server.dart';
 
 
 class ManejaSQL {
@@ -108,6 +109,57 @@ class ManejaSQL {
        });
     
   }
+}
+
+const String webHost = "127.0.0.1";
+const int webPuerto = 6666;
+var contenidos;
+
+void main() {
+  
+  HttpServer.bind(webHost, webPuerto).then((server){
+    server.listen((HttpRequest request){
+     request.listen((List<int> buffer){
+       var jsonString = new String.fromCharCodes(buffer);
+       Map data = JSON.decode(jsonString);
+       print(data[0]);
+       print(data[1]);
+       switch(request.uri.path){
+         case "/login":
+           //registro en bd
+           //contenidos = login(data);
+           contenidos = JSON.encode(contenidos);
+           data = {};
+           break;
+         
+         default:
+           print("default");
+           break;
+       }
+     });
+     Responde(request);
+    });
+  });
+  
+}
+
+void Responde(HttpRequest request){
+  if (contenidos != null){
+    request.response
+      ..headers.add('Acces-Control-Allow-Origin', '*')
+      ..headers.add('Content-Type','application/x-www-form-urlencoded')
+      ..headers.add('Acept')
+      ..statusCode = 201
+      ..write(contenidos)
+      ..close();
+  }else{
+    request.response
+          ..headers.add('Acces-Control-Allow-Origin', '*')
+          ..headers.add('Content-Type','text/plain')
+          ..statusCode = 500
+          ..write("Error")
+          ..close();
+  } 
 }
 
 
