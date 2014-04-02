@@ -1,7 +1,7 @@
 import 'dart:html';
-import 'dart:convert';
-import 'dart:js';
-
+//import 'dart:convert';
+//import 'dart:js';
+/*
 formulario(FormElement form){
   
   var dato = {};
@@ -13,19 +13,29 @@ formulario(FormElement form){
   
   return dato;
 }
-
+*/
 void main(){
-
-  FormElement form = querySelector('#login');
+  InputElement usuario, password;
+  
+  //FormElement form = querySelector('#login');
   ButtonElement button = querySelector('#entrar');
   ButtonElement buttonReg = querySelector('#registrar');
   
-  //buttonReg.onClick.listen((e){
-  //  window.location.assign("Registro.html");
-  //});
+  usuario = querySelector('#usuario');
+  password = querySelector('#password');
+  /*
+  buttonReg.onClick.listen((e){
+    window.location.assign("Registro.html");
+  });*/
 
   button.onClick.listen((e){
-    var entrada = new HttpRequest();
+    //Con "usuario.value" recojo el valor que introduces en el formulario y solo queda llamar a la función que mira en la 
+    //base de datos si el usurio es correcto y dejar pasar a la página principal del proyecto
+    print(usuario.value);
+    print(password.value);
+    window.alert("Bienvenido a GiveMeMoney");
+    window.location.assign('givememoney.html');
+    /*var entrada = new HttpRequest();
     
     entrada.onReadyStateChange.listen((ProgressEvent e){
       if(entrada.readyState == 4){
@@ -45,6 +55,6 @@ void main(){
     });
     
     entrada.open('POST', form.action);
-    entrada.send(JSON.encode(formulario(form)));
+    entrada.send(JSON.encode(formulario(form)));*/
   });
 }

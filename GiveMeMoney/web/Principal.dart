@@ -4,8 +4,8 @@ import 'Usuario.dart';
 import 'Gasto.dart';
 import 'conectaMysql.dart';
 
-import 'package:sqljocky/sqljocky.dart';
-import 'package:sqljocky/utils.dart';
+//import 'package:sqljocky/sqljocky.dart';
+//import 'package:sqljocky/utils.dart';
 
 
 void main(){

@@ -1,10 +1,10 @@
-import 'package:sqljocky/sqljocky.dart';
-import 'package:sqljocky/utils.dart';
+//import 'package:sqljocky/sqljocky.dart';
+//import 'package:sqljocky/utils.dart';
 import 'dart:async';
 import 'GastoDiario.dart';
 import 'dart:io';
 import 'dart:convert';
-import 'package:http_server/http_server.dart';
+
 
 
 class ManejaSQL {
@@ -110,7 +110,7 @@ class ManejaSQL {
     
   }
 }
-
+/*
 const String webHost = "127.0.0.1";
 const int webPuerto = 6666;
 var contenidos;
@@ -161,6 +161,6 @@ void Responde(HttpRequest request){
           ..close();
   } 
 }
-
+*/
 
 
