@@ -79,20 +79,27 @@ class ManejaSQL {
   
 //Insertar nuevo ingreso en BD.
   
-  Future addIngreso(valor) {
+  Future addIngreso(valor, nombre_user) {
       
       var completer = new Completer();
       
       DateTime fecha_ingreso = new DateTime.now();
       
-      pool.query('insert into ingreso (valor, fecha_ingreso) values ("$valor", "$fecha_ingreso")').then((query){
+      pool.query('insert into ingreso (valor, fecha_ingreso, nombre_user) values ("$valor", "$fecha_ingreso", "$nombre_user")').then((query){
         print("Consulta preparada...");
       });
       
-      print("Usuario insertado.");
+      pool.query('select saldo from usuario').then((query){
+        query.forEach((row){
+          var saldo = row[0] + valor;
+          setSaldoUsuario(nombre_user, saldo);
+          print("El saldo de user es: $saldo");
+        });
+      });
+      
+      print("Ingreso insertado.");
       return completer.future;
-  }
-  
+  }  
 //Leer un ingreso de la BD.
   
   Future readIngreso() {
