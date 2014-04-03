@@ -113,11 +113,23 @@ class ManejaSQL {
   
 //Insertar nuevo gasto en BD.
   
-  Future addGasto(){
+  Future addGasto(valor, categoria, descripcion){
     
-    var completer = new Completer(descripcion);
+    var completer = new Completer();
     
-    pool.query('insert into gasto (descripcion) values ("$descripcion")')
+    DateTime fecha_gasto = new DateTime.now();
+    
+    pool.query('insert into gasto (descripcion) values ("$descripcion")').then((query){
+      print("Consulta preparada...");
+    });
+    
+    pool.query('insert into $categoria (valor, fecha) values ("$valor", "$fecha_gasto")').then((query){
+      print("Consulta preparada...");
+    });
+    
+    print("Usuario insertado.");
+    return completer.future;
+    
   }
     
  
