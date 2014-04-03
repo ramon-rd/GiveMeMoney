@@ -4,8 +4,8 @@ import 'Usuario.dart';
 import 'Gasto.dart';
 import 'conectaMysql.dart';
 
-//import 'package:sqljocky/sqljocky.dart';
-//import 'package:sqljocky/utils.dart';
+import 'package:sqljocky/sqljocky.dart';
+import 'package:sqljocky/utils.dart';
 
 
 void main(){
@@ -54,12 +54,12 @@ void main(){
     print (desviacion);
    // num dinero = nuevo.saldoRestante();
     //print (dinero);
-  //  print (b);
+  ////  print (b);
     String nombre = nuevo.getLogin();
     print(nombre);
     //example.addDataIngreso(3, hoy);
-    example.addData(150,nombre);
-    example.readData(nombre);
- 
-    
-  }
+   // example.addData(150,nombre);
+    //example.readData(nombre);
+    example.setSaldoUsuario(nombre, 150); 
+    example.addGasto(500, "viajes", "visita alhambra");
+ }
