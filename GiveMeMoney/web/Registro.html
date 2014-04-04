@@ -5,7 +5,7 @@
   	<meta charset="utf-8">
     <title>GiveMeMoney</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    
+ <!--   
     <script language="text/javascript">
       navigator.webkitStartDart();
     </script>
@@ -13,7 +13,7 @@
     <script src="/scripts/Principal.dart"
       type="application/dart"></script>
     
-    
+    -->
   </head>
  
   <body>   
@@ -28,20 +28,20 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/GiveMeMoney/web/givememoney.html">GiveMeMoney </a>
+      <a class="navbar-brand">GiveMeMoney </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/GiveMeMoney/web/givememoney.html">Perfil</a></li>
+       <!-- <li class="active"><a href="/GiveMeMoney/web/givememoney.html">Perfil</a></li>-->
         <li><a href="/GiveMeMoney/web/contacto.html">Conócenos</a></li>     
       </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
         </div>
-        <button type="submit" class="btn btn-default">Añadir gastos</button>
+        <!--<button type="submit" class="btn btn-default">Añadir gastos</button>
         <div class="btn-group">
           <button type="button" class="btn btn-info">Gastos</button>
           <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
@@ -55,12 +55,12 @@
             <li><a href="#">Anuales</a></li>
             <li class="divider"></li>
           </ul>
-        </div>
+        </div>-->
       </form>
       <form style="padding-top: 8px" class="nav navbar-nav navbar-right">
-        <a href="/GiveMeMoney/web/Registro.html"><button type="button" class="btn btn-default" >Registro</button></a>
+       <!-- <a href="/GiveMeMoney/web/Registro.html"><button type="button" class="btn btn-default" >Registro</button></a>-->
         <a href="/GiveMeMoney/web/login.html"><button type="button" class="btn btn-success">Login</button></a>
-        <button type="submit" class="btn btn-danger">Logout</button>
+        <!--<button type="submit" class="btn btn-danger">Logout</button>-->
       </form>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -90,7 +90,7 @@
        </div>
     </div>
     
-    
+  <!--  
     <script type="text/javascript">
     	function validar_formulario(){
     		var er_dni = /^([0-9]{8}[A-Z])$/;
@@ -157,8 +157,58 @@
 			alert("Muchas gracias por enviar el formulario");
 			document.form.submit();
 		}
-	</script>
-     <div style="margin-left:310px" class="col-xs-6 ">
+	</script>-->
+  
+    <div id="sample_container_id">
+      <div class="row"></div>
+        <div class="col-lg-12 ">
+          <div class="thumbnail">
+          <div class="row featurette">
+            <div class="col-md-4">
+             <!-- <h3>La herramienta gestionar tu dinero.</h3>
+                  <p id="sample_text_id">  Es una aplicación que te permitirá controlar fácilmente de gastos diarios, semanales, mensuales y anuales.</p>  
+                  <p> Podrás manejar finanzas de tu casa o de tu negocio gracias a la posibilidad de poder crear perfiles de usuario.</p>
+                  <p> Como principal funcionalidad, destaca el poder consultar estadísticas e informes de gastos que os permitirán ver los gastos por día, semana, mes y año.  También se pueden consultar multitud de informes de dos niveles:  </p>
+                  <p> - Tipo de gasto.</p>
+                  <p> - Temporización. </p>-->
+            </div>
+            <div class="col-md-4">
+            <!--<h1>Formulario para registrar usuario</h1>-->
+            <form action="/GiveMeMoney/web/index.html">
+              <fieldset>
+                <legend>Datos Personales</legend>
+                  <label>Nombre: </label><br>
+                  <input id="nombre" title="Introduzca un nombre" type="text" required/> <br><br>
+                  <label>Apellidos: </label><br>
+                  <input id="apellidos" title="Introduzca sus apellidos" type="text" required/> <br><br>
+                  <label>Fecha de nacimiento: </label><br>
+                  <input id="fecha" title="Introduzca una fecha" type="date" required/> <br><br>
+                  <label>DNI: </label><br>
+                  <input id="dni" title="Introduzca un DNI valido" pattern="^([0-9]{8}[A-Z])$" type="text" placeholder="8 dígitos más letra" required/> <br><br>
+              </fieldset><br>
+              <fieldset>
+                <legend>Información de usuario</legend>
+                  <label>Correo electrónico: </label><br>
+                  <input id="correo" title="Introduzca una dirección de correo valida" pattern="^[a-z0-9]+(.[a-z0-9]+)*@[a-z0-9]+(.[a-z0-9]+)*(.[a-z]{2,3})$" type="text" placeholder="mail@example.com" required/> <br><br>
+                  <label>Número de teléfono: </label><br>
+                  <input id="telefono" title="Introduzca un número de teléfono valido" pattern="^([6]|[9])([0-9]{8})$" type="text" required/> <br><br>
+                  <label>Contraseña: </label><br>
+                  <input id="password" type="password" required/> <br><br>
+                  <label>Repita la contraseña: </label><br>
+                  <input id="password2" type="password" required/> <br><br>
+               </fieldset><br>
+              <button id="enviar" class="submit">Enviar datos</button>
+              <input type="reset"id="boton2"value="Borrar datos"/>
+            </form>
+            </div>
+            <div class="col-md-4">
+              <!--<img class="featurette-image img-responsive" src="images/logotipo.png" alt="GiveMeMoney">-->
+            </div>
+          </div>     
+          </div>
+       </div>
+    </div>
+    <!-- <div style="margin-left:310px" class="col-xs-6 ">
           <div class="thumbnail">
     
             <h1>Formulario para registrar usuario</h1>
@@ -189,13 +239,13 @@
               <input type="reset"id="boton2"value="Borrar datos"/>
             </form>
           </div>
-       </div>
+       </div>-->
 
-            <div class="col-lg-12 ">
+           <!-- <div class="col-lg-12 ">
           <div class="thumbnail">
-          </div></div>
+          </div></div>-->
      
-    <script type="application/dart" src="Principal.dart"></script>
+    <script type="application/dart" src="Registro.dart"></script>
     <!-- for this next line to work, your pubspec.yaml file must have a dependency on 'browser' -->
     <script src="packages/browser/dart.js"></script>
     

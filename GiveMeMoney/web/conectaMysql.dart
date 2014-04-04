@@ -1,7 +1,7 @@
 //library GiveMeMoney;
 
-import 'package:sqljocky/sqljocky.dart';
-import 'package:sqljocky/utils.dart';
+//import 'package:sqljocky/sqljocky.dart';
+//import 'package:sqljocky/utils.dart';
 
 import 'dart:async';
 import 'GastoDiario.dart';
