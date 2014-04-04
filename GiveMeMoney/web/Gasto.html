@@ -1,19 +1,174 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-  	<meta charset="utf-8">
-    <title>GiveMeMoney</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-  </head>
- 
-  <body>   
-    <p id="text">jniohlobh</p>
-    <p>adñofjasod</p>
-    <p id="RipVanWinkle">
-      RipVanWinkle paragraph.
-    </p>
-    <script type="text/javascript">
+<head>
+<meta charset="utf-8">
+<title>GiveMeMoney</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+  <nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle"
+          data-toggle="collapse"
+          data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span> <span
+            class="icon-bar"></span> <span class="icon-bar"></span> <span
+            class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="">GiveMeMoney </a>
+      </div>
+      <div class="collapse navbar-collapse"
+        id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a
+            href="/GiveMeMoney/web/givememoney.html">Perfil</a></li>
+          <li><a href="/GiveMeMoney/web/contacto.html">Conócenos</a></li>
+        </ul>
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+        </form>
+        <form style="padding-top: 8px"
+          class="nav navbar-nav navbar-right">
+          <!--<a href="/GiveMeMoney/web/Registro.html"><button type="button" class="btn btn-default" >Registro</button></a>-->
+          <!--<a href="/GiveMeMoney/web/login.html"><button type="button" class="btn btn-success">Login</button></a>-->
+          <button type="submit" class="btn btn-danger">Logout</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <h1>GiveMeMoney</h1>
+  <p></p>
+  <div id="sample_container_id">
+    <div class="row"></div>
+    <div class="col-lg-12 ">
+      <div class="thumbnail">
+        <div class="row featurette">
+          <div class="col-md-8">
+            <h3>La herramienta gestionar tu dinero.</h3>
+            <p id="sample_text_id">Es una aplicación que te
+              permitirá controlar fácilmente de gastos diarios,
+              semanales, mensuales y anuales.</p>
+            <p>Podrás manejar finanzas de tu casa o de tu negocio
+              gracias a la posibilidad de poder crear perfiles de
+              usuario.</p>
+            <p>Como principal funcionalidad, destaca el poder
+              consultar estadísticas e informes de gastos que os
+              permitirán ver los gastos por día, semana, mes y año.
+              También se pueden consultar multitud de informes de dos
+              niveles:</p>
+            <p>- Tipo de gasto.</p>
+            <p>- Temporización.</p>
+          </div>
+          <div class="col-md-4">
+            <img class="featurette-image img-responsive"
+              src="images/logotipo.png" alt="GiveMeMoney">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-left: 310px" class="col-xs-6 ">
+    <div class="thumbnail">
+      <h1>Gastos Personales</h1>
+      <form action="/GiveMeMoney/web/givememoney.html">
+        <fieldset>
+         <label>Elija el tipo de gasto: </label><br>
+         <select id="gastos">
+          <option value = "0">Elegir opción</option>
+          <option value = "1">Alimentación</option>
+          <option value = "2">Gastos del hogar</option>
+          <option value = "3">Escolares</option>
+          <option value = "4">Transportes</option>
+          <option value = "5">Ocio</option>
+          <option value = "6">Otros</option>
+         </select>
+         <input type="number" id="cantidad" title="Introduzca una cantidad por favor." required/> 
+        </fieldset>
+        <br>        
+        <br> <button class="submit" id="enviar">Introducir gastos</button>
+      </form>
+    </div>
+  </div>
+  <script type="application/dart" src="Gasto.dart"></script>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script src="packages/browser/dart.js"></script>
+  <footer class="panel-footer" role="navigation">
+    <div class="container">
+      <div class="col-sm-3">
+        <table class="table table-condensed">
+          <thead>
+            <td><h3>Offices</h3></td>
+          </thead>
+          <tr>
+            <td><strong>GiveMeMoney &amp; Publishing</strong></td>
+          </tr>
+          <tr>
+            <td>Calle Periodista Daniel Saucedo Aranda s/n</td>
+          </tr>
+          <tr>
+            <td>Granada 18009 - SPAIN</td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-sm-3">
+        <table class="table table-condensed">
+          <thead>
+            <td><h3>Join Us</h3></td>
+          </thead>
+          <tr>
+            <td>jcastilloprez@correo.ugr.es</td>
+          </tr>
+          <tr>
+            <td>josemlp.montefrio@gmail.com</td>
+          </tr>
+          <tr>
+            <td>victoriasantiago@correo.ugr.es</td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-sm-3">
+        <table class="table table-condensed">
+          <thead>
+            <td><h3>Join Us</h3></td>
+          </thead>
+          <tr>
+            <td>luis.redondo.exposito@gmail.com</td>
+          </tr>
+          <tr>
+            <td>juanfrarobles@gmail.com</td>
+          </tr>
+          <tr>
+            <td>ramon92@correo.ugr.es</td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-sm-3">
+        <table class="table table-condensed">
+          <thead>
+            <td><h3>Stop By</h3></td>
+          </thead>
+          <tr>
+            <td>Monday - Friday 8:30 - 17:30</td>
+          </tr>
+          <tr>
+            <td>Saturday: Closed</td>
+          </tr>
+          <tr>
+            <td>Sunday: Closed</td>
+          </tr>
+        </table>
+      </div>
+      <div style=""clear:both">
+        <p></p>
+      </div>
+    </div>
+    <!-- ./container -->
+  </footer>
+  <!--<script type="text/javascript">
     	function validar_formulario(formulario){
     		var er_dni = /^([0-9]{8}[A-Z])$/;
     		var er_tel = /^([6]|[9])([0-9]{8})$/;
@@ -77,49 +232,6 @@
 			
 			return true;
 		}
-	</script>
-    
-    <h1>Formulario para registrar usuario</h1>
-    <form action="/GiveMeMoney/web/Procesar.html" method="post" onsubmit="return validar_formulario(this);">
-      <fieldset>
-        <legend>Datos Personales</legend>
-          <label for="nombre">Nombre: </label>
-          <input type="text" name="nombre" value="paos"/> <br><br>
-          <label for="apellidos">Apellidos: </label>
-          <input type="text" name="apellidos"/> <br><br>
-          <label for="fecha">Fecha de nacimiento: </label>
-          <input type="date" name="fecha" /> <br><br>
-          <label for="dni">DNI: </label>
-          <input type="text" name="dni" /> <br><br>
-      </fieldset><br>
-      <fieldset>
-        <legend>Información de usuario</legend>
-          <label for="correo">Correo electrónico: </label>
-          <input type="email" name="correo"/> <br><br>
-          <label for="telefono">Número de teléfono: </label>
-          <input type="text" name="telefono"/> <br><br>
-          <label for="contrasenia">Contraseña: </label>
-          <input type="password" name="contrasenia" /> <br><br>
-          <label for="contrasenia2">Repita la contraseña: </label>
-          <input type="password" name="contrasenia2" /> <br><br>
-       </fieldset><br>
-      <input type="submit"id="boton1"value="Enviar datos"/>
-      <input type="reset"id="boton2"value="Borrar datos"/>
-    </form>
-    <!--<form action="POST">
-      <p>Nombre: <input type="text" name="name_control" autofocus required /></p>
-      <p>Apellidos: <input type="text" name="name_control" autofocus required /></p>
-      <p>DNI: <input type="text" name="name_control" autofocus required /></p>
-      <p>Contraseña: <input type="text" name="name_control" autofocus required /></p>
-      <p>Repita su contraseña: <input type="text" name="name_control" autofocus required /></p>
-      <p>Correo Electrónico: <input type="email" name="email_control" autofocus required /></p>
-      <p>Fecha de Nacimiento: <input type="date" name="date_control" autofocus required /></p>
-      <p>Saldo Inicial: <input type="text" name="name_control" autofocus required /></p>
-      <input type="submit" value="Enviar datos" />
-    </form>-->
-     
-    <script type="application/dart" src="Principal.dart"></script>
-    <!-- for this next line to work, your pubspec.yaml file must have a dependency on 'browser' -->
-    <script src="packages/browser/dart.js"></script>
-  </body>
+	</script>-->
+</body>
 </html>

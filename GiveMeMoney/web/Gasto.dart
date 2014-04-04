@@ -1,5 +1,6 @@
 //part of GiveMeMoney;
 //library GiveMeMoney;
+import 'dart:html';
 
 class Gasto{
   
@@ -43,5 +44,19 @@ class Gasto{
   void aumentarGasto(num importe){
     this.valor += importe;
   }
+  
+}
+
+void main(){
+  
+  SelectElement gastos=querySelector('#gastos');
+  InputElement cantidad = querySelector('#cantidad');
+  
+  ButtonElement button = querySelector('#enviar');
+  
+  button.onClick.listen((e){
+    print(gastos.value);
+    print(cantidad.value);
+  });
   
 }
