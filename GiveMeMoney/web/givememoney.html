@@ -6,30 +6,33 @@
 <title>GiveMeMoney</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 
-<!--graficas
-    
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses'],
-          ['2004',  1000,      400],
-          ['2005',  1170,      460],
-          ['2006',  660,       1120],
-          ['2007',  1030,      540]
+          ['Dias de la Semana', 'Alimentación', 'Hogar', 'Escolares', 'Transporte', 'Ocio', 'Otros'],
+          ['Lunes',    100, 400, 100, 400, 220, 100],
+          ['Martes',   170, 460, 300, 400, 100, 400],
+          ['Miercoles', 660, 520, 170, 460, 220, 100],
+          ['Jueves',   430, 540, 170, 460, 100, 400],
+          ['Viernes',  430, 540, 370, 460, 220, 100],
+          ['Sabado',   430, 540, 660, 220, 100, 400],
+          ['Domingo',  230, 540, 660, 320, 220, 100]
         ]);
 
         var options = {
-          title: 'Company Performance',
-          hAxis: {title: 'Year', titleTextStyle: {color: 'red'}}
+          title: 'Gastos semanales',
+          hAxis: {title: 'Días de la semana', titleTextStyle: {color: 'blue'}}
         };
 
-        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        var chart = new google.visualization.ColumnChart(document.getElementById('visualization'));
         chart.draw(data, options);
       }
     </script>
-    -->
+   
 </head>
 <body>
   <nav class="navbar navbar-inverse" role="navigation">
@@ -108,15 +111,15 @@
       <div class="col-xs-16 col-md-8">
         <div class="thumbnail">
           <!--graficas-->
-          <h2>Gastos</h2>
-          <p>.....[Muestra espacio de gráfica]...</p>
-          <!--<div id="visualization" style="width: 600px; height: 400px;"></div>-->
+          <h2 style="text-align:center">Gastos</h2>
+          <!--<p>.....[Muestra espacio de gráfica]...</p>-->
+          <div id="visualization" style="width: 800px; height: 400px;"></div>
           <div class="list-group">
             <a href="#" class="list-group-item active"> Opciones: </a> <a
-              href="#" class="list-group-item">Consultar gráfica
-              diaria</a> <a href="#" class="list-group-item">Consultar
-              gráfica semanal</a> <a href="#" class="list-group-item">Consultar
-              gráfica mensual</a> <a href="#" class="list-group-item">Consultar
+              href="/GiveMeMoney/web/charts.html" class="list-group-item">Consultar gráfica
+              diaria</a> <a href="/GiveMeMoney/web/charts.html" class="list-group-item">Consultar
+              gráfica semanal</a> <a href="/GiveMeMoney/web/charts.html" class="list-group-item">Consultar
+              gráfica mensual</a> <a href="/GiveMeMoney/web/charts.html" class="list-group-item">Consultar
               gráfica anual</a>
           </div>
         </div>
@@ -126,15 +129,16 @@
       <div class="thumbnail">
         <!--graficas-->
         <h2>Perfil</h2>
-        <img src="images/fotos/castillo.jpg">
-        <p>.....[Muestra espacio de foto]...</p>
+        <img src="images/fotos/castillo.jpg"><br>
+        <!--<p>.....[Muestra espacio de foto]...</p>-->
         <div class="col-xs-6 col-md-12">
           <div class="thumbnail">
             <p>
-              <a href="#" class="btn btn-primary" role="button">Editar</a>
+              <a href="/GiveMeMoney/web/modificarperfil.html" class="btn btn-primary" role="button">Editar</a>
               <a href="#" class="btn btn-primary" role="button">Guardar</a>
-              <a href="#" class="btn btn-primary" role="button">Añadir
-                gastos</a>
+              <a href="/GiveMeMoney/web/Gasto.html"><button
+              type="button" class="btn btn-primary">Añadir
+              gastos</button></a>
             </p>
             <h4>Nombre:</h4>
             <h4>Apellidos:</h4>

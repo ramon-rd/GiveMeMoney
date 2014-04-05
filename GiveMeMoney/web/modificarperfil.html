@@ -6,6 +6,7 @@
 <title>GiveMeMoney</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
+
 <body>
   <nav class="navbar navbar-inverse" role="navigation">
     <div class="container-fluid">
@@ -17,13 +18,11 @@
             class="icon-bar"></span> <span class="icon-bar"></span> <span
             class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="">GiveMeMoney </a>
+        <a class="navbar-brand">GiveMeMoney </a>
       </div>
       <div class="collapse navbar-collapse"
         id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active"><a
-            href="/GiveMeMoney/web/givememoney.html">Perfil</a></li>
           <li><a href="/GiveMeMoney/web/contacto.html">Conócenos</a></li>
         </ul>
         <form class="navbar-form navbar-left" role="search">
@@ -33,15 +32,13 @@
         </form>
         <form style="padding-top: 8px"
           class="nav navbar-nav navbar-right">
-          <!--<a href="/GiveMeMoney/web/Registro.html"><button type="button" class="btn btn-default" >Registro</button></a>-->
-          <!--<a href="/GiveMeMoney/web/login.html"><button type="button" class="btn btn-success">Login</button></a>-->
-          <button type="submit" class="btn btn-danger">Logout</button>
+          <a href="/GiveMeMoney/web/login.html"><button
+              type="button" class="btn btn-success">Login</button></a>
         </form>
       </div>
     </div>
   </nav>
   <h1>GiveMeMoney</h1>
-  <p></p>
   <div id="sample_container_id">
     <div class="row"></div>
     <div class="col-lg-12 ">
@@ -71,31 +68,63 @@
       </div>
     </div>
   </div>
-  <div style="margin-left: 310px" class="col-xs-6 ">
-    <div class="thumbnail">
-      <h1>Gastos Personales</h1>
-      <form action="/GiveMeMoney/web/givememoney.html">
-        <fieldset>
-         <label>Elija el tipo de gasto: </label><br>
-         <select id="gastos">
-          <option value = "0">Elegir opción</option>
-          <option value = "1">Alimentación</option>
-          <option value = "2">Gastos del hogar</option>
-          <option value = "3">Escolares</option>
-          <option value = "4">Transportes</option>
-          <option value = "5">Ocio</option>
-          <option value = "6">Otros</option>
-         </select>
-         <input type="number" id="cantidad" title="Introduzca una cantidad por favor." required/> €
-        </fieldset>
-        <br>        
-        <br> <button class="submit" id="enviar">Introducir gastos</button>
-      </form>
+  <div id="sample_container_id">
+    <div class="row"></div>
+    <div class="col-lg-12 ">
+      <div class="thumbnail">
+        <div class="row featurette">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <form action="/GiveMeMoney/web/givememoney.html">
+              <fieldset>
+                <legend>Modifique sus datos personales</legend>
+                <label>Nombre: </label><br> <input id="nombre"
+                  title="Introduzca un nombre" type="text"/> <br>
+                <br> <label>Apellidos: </label><br> <input
+                  id="apellidos" title="Introduzca sus apellidos"
+                  type="text"/> <br>
+                <br> <label>Fecha de nacimiento: </label><br>
+                <input id="fecha" title="Introduzca una fecha"
+                  type="date"/> <br>
+                <br> <label>DNI: </label><br> <input id="dni"
+                  title="Introduzca un DNI valido"
+                  pattern="^([0-9]{8}[A-Z])$" type="text"
+                  placeholder="8 dígitos más letra" /> <br>
+                <br>
+              </fieldset>
+              <br>
+              <fieldset>
+                <legend>Información de usuario</legend>
+                <label>Correo electrónico: </label><br> <input
+                  id="correo"
+                  title="Introduzca una dirección de correo valida"
+                  pattern="^[a-z0-9]+(.[a-z0-9]+)*@[a-z0-9]+(.[a-z0-9]+)*(.[a-z]{2,3})$"
+                  type="text" placeholder="mail@example.com" />
+                <br>
+                <br> <label>Número de teléfono: </label><br> <input
+                  id="telefono"
+                  title="Introduzca un número de teléfono valido"
+                  pattern="^([6]|[9])([0-9]{8})$" type="text"/>
+                <br>
+                <br> <label>Contraseña: </label><br> <input
+                  id="password" type="password" /> <br>
+                <br> <label>Repita la contraseña: </label><br>
+                <input id="password2" type="password" required /> <br>
+                <br>
+              </fieldset>
+              <br>
+              <button id="enviar" class="submit">Enviar modificaciones</button>
+              <input type="reset" id="boton2" value="Borrar datos" />
+            </form>
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+      </div>
     </div>
   </div>
-  <script type="application/dart" src="Gasto.dart"></script>
-  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="application/dart" src="Registro.dart"></script>
   <script src="packages/browser/dart.js"></script>
+
   <footer class="panel-footer" role="navigation">
     <div class="container">
       <div class="col-sm-3">
@@ -162,76 +191,8 @@
           </tr>
         </table>
       </div>
-      <div style=""clear:both">
-        <p></p>
-      </div>
     </div>
-    <!-- ./container -->
   </footer>
-  <!--<script type="text/javascript">
-    	function validar_formulario(formulario){
-    		var er_dni = /^([0-9]{8}[A-Z])$/;
-    		var er_tel = /^([6]|[9])([0-9]{8})$/;
-    		var er_correo = /^[a-z0-9]+(.[a-z0-9]+)*@[a-z0-9]+(.[a-z0-9]+)*(.[a-z]{2,3})$/;
-    		
-			//para validar el campo nombre
-			if(formulario.nombre.value.length == 0){
-				alert("Tiene que escribir su nombre");
-				formulario.nombre.focus();
-				return false;
-			}
 
-			//para validar el campo apellidos
-			if(formulario.apellidos.value.length == 0){
-				alert("Tiene que escribir sus apellidos");
-				formulario.apellidos.focus();
-				return false;
-			}
-
-			//para validar el campo fecha de nacimiento
-			if(formulario.fecha.value.length == 0){
-			  	alert("Introduzca una fecha de nacimiento");
-			  	formulario.fecha.focus();
-				return false;
-			}
-			
-			//para validar el campo dni
-			if(!er_dni.test(formulario.dni.value)){
-				alert("Contenido del campo DNI no válido");
-				formulario.dni.focus();
-				return false;
-			}
-			
-			//para validar el campo correo electronico
-			if(!er_correo.test(formulario.correo.value)){
-				alert("Contenido del campo correo electronico no válido");
-				formulario.correo.focus();
-				return false;
-			}
-			
-			//para validar el campo del número de telefono
-			if(!er_tel.test(formulario.telefono.value)){
-				alert("Contenido del campo número de teléfono no válido");
-				formulario.telefono.focus();
-				return false;
-			}
-			
-			//para validar el campo contraseña
-			if(formulario.contrasenia.value.length < 6){
-			  formulario.contrasenia.focus();
-				alert('Contenido del campo contraseña demasiado corto. La contraseña debe tener al menos 6 caracteres');
-				return false;
-			}
-
-			//para validar el campo repiticion de contraseña
-			if(formulario.contrasenia2.value != formulario.contrasenia.value){
-			  formulario.contrasenia2.focus();
-				alert('Las contraseñas no coinciden. Vuelva a introducir la contraseña');
-				return false;
-			}
-			
-			return true;
-		}
-	</script>-->
 </body>
 </html>

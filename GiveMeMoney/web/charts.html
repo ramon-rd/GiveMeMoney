@@ -5,10 +5,39 @@
 <meta charset="utf-8">
 <title>GiveMeMoney</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
+
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Dias de la Semana', 'Alimentación', 'Hogar', 'Escolares', 'Transporte', 'Ocio', 'Otros'],
+          ['Lunes',    100, 400, 100, 400, 220, 100],
+          ['Martes',   170, 460, 300, 400, 100, 400],
+          ['Miercoles', 660, 520, 170, 460, 220, 100],
+          ['Jueves',   430, 540, 170, 460, 100, 400],
+          ['Viernes',  430, 540, 370, 460, 220, 100],
+          ['Sabado',   430, 540, 660, 220, 100, 400],
+          ['Domingo',  230, 540, 660, 320, 220, 100]
+        ]);
+
+        var options = {
+          title: 'Gastos semanales',
+          hAxis: {title: 'Días de la semana', titleTextStyle: {color: 'blue'}}
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('visualization'));
+        chart.draw(data, options);
+      }
+    </script>
+   
 </head>
 <body>
   <nav class="navbar navbar-inverse" role="navigation">
     <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <button type="button" class="navbar-toggle"
           data-toggle="collapse"
@@ -19,6 +48,8 @@
         </button>
         <a class="navbar-brand" href="">GiveMeMoney </a>
       </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse"
         id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
@@ -30,17 +61,20 @@
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Search">
           </div>
+          <a href="/GiveMeMoney/web/Gasto.html"><button
+              type="button" class="btn btn-primary">Añadir
+              gastos</button></a>
         </form>
         <form style="padding-top: 8px"
           class="nav navbar-nav navbar-right">
-          <!--<a href="/GiveMeMoney/web/Registro.html"><button type="button" class="btn btn-default" >Registro</button></a>-->
-          <!--<a href="/GiveMeMoney/web/login.html"><button type="button" class="btn btn-success">Login</button></a>-->
           <button type="submit" class="btn btn-danger">Logout</button>
         </form>
       </div>
     </div>
   </nav>
+
   <h1>GiveMeMoney</h1>
+
   <p></p>
   <div id="sample_container_id">
     <div class="row"></div>
@@ -70,30 +104,60 @@
         </div>
       </div>
     </div>
-  </div>
-  <div style="margin-left: 310px" class="col-xs-6 ">
-    <div class="thumbnail">
-      <h1>Gastos Personales</h1>
-      <form action="/GiveMeMoney/web/givememoney.html">
-        <fieldset>
-         <label>Elija el tipo de gasto: </label><br>
-         <select id="gastos">
-          <option value = "0">Elegir opción</option>
-          <option value = "1">Alimentación</option>
-          <option value = "2">Gastos del hogar</option>
-          <option value = "3">Escolares</option>
-          <option value = "4">Transportes</option>
-          <option value = "5">Ocio</option>
-          <option value = "6">Otros</option>
-         </select>
-         <input type="number" id="cantidad" title="Introduzca una cantidad por favor." required/> €
-        </fieldset>
-        <br>        
-        <br> <button class="submit" id="enviar">Introducir gastos</button>
-      </form>
+    <div>
+      <div class="row"></div>
+      <div class="col-xs-16 col-md-8">
+        <div class="thumbnail">
+          <!--graficas-->
+          <h2 style="text-align:center">Gastos</h2>
+          <div id="visualization" style="width: 800px; height: 400px;"></div>
+          <div class="list-group">
+            <a href="#" class="list-group-item active"> Opciones: </a> <a
+              href="#" class="list-group-item">Consultar gráfica
+              diaria</a> <a href="/GiveMeMoney/web/givememoney.html" class="list-group-item">Consultar
+              gráfica semanal</a> <a href="#" class="list-group-item">Consultar
+              gráfica mensual</a> <a href="#" class="list-group-item">Consultar
+              gráfica anual</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-4">
+      <div class="thumbnail">
+        <!--graficas-->
+        <h2>Perfil</h2>
+        <img src="images/fotos/castillo.jpg"><br>
+        <div class="col-xs-6 col-md-12">
+          <div class="thumbnail">
+            <p>
+              <a href="/GiveMeMoney/web/modificarperfil.html" class="btn btn-primary" role="button">Editar</a>
+              <a href="#" class="btn btn-primary" role="button">Guardar</a>
+              <a href="/GiveMeMoney/web/Gasto.html"><button
+              type="button" class="btn btn-primary">Añadir
+              gastos</button></a>
+            </p>
+            <h4>Nombre:</h4>
+            <h4>Apellidos:</h4>
+            <h4>Usuario:</h4>
+            <h4>E-mail:</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-md-12">
+            <div class="thumbnail">
+              <h2>Estadisticas</h2>
+              <h3>Fecha</h3>
+              <p>Descripción</p>
+              <p>Descripción</p>
+              <p>Descripción</p>
+              <p>Descripción</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <script type="application/dart" src="Gasto.dart"></script>
+  <script type="application/dart" src="givememoney.dart"></script>
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
   <script src="packages/browser/dart.js"></script>
   <footer class="panel-footer" role="navigation">
@@ -166,72 +230,7 @@
         <p></p>
       </div>
     </div>
-    <!-- ./container -->
   </footer>
-  <!--<script type="text/javascript">
-    	function validar_formulario(formulario){
-    		var er_dni = /^([0-9]{8}[A-Z])$/;
-    		var er_tel = /^([6]|[9])([0-9]{8})$/;
-    		var er_correo = /^[a-z0-9]+(.[a-z0-9]+)*@[a-z0-9]+(.[a-z0-9]+)*(.[a-z]{2,3})$/;
-    		
-			//para validar el campo nombre
-			if(formulario.nombre.value.length == 0){
-				alert("Tiene que escribir su nombre");
-				formulario.nombre.focus();
-				return false;
-			}
 
-			//para validar el campo apellidos
-			if(formulario.apellidos.value.length == 0){
-				alert("Tiene que escribir sus apellidos");
-				formulario.apellidos.focus();
-				return false;
-			}
-
-			//para validar el campo fecha de nacimiento
-			if(formulario.fecha.value.length == 0){
-			  	alert("Introduzca una fecha de nacimiento");
-			  	formulario.fecha.focus();
-				return false;
-			}
-			
-			//para validar el campo dni
-			if(!er_dni.test(formulario.dni.value)){
-				alert("Contenido del campo DNI no válido");
-				formulario.dni.focus();
-				return false;
-			}
-			
-			//para validar el campo correo electronico
-			if(!er_correo.test(formulario.correo.value)){
-				alert("Contenido del campo correo electronico no válido");
-				formulario.correo.focus();
-				return false;
-			}
-			
-			//para validar el campo del número de telefono
-			if(!er_tel.test(formulario.telefono.value)){
-				alert("Contenido del campo número de teléfono no válido");
-				formulario.telefono.focus();
-				return false;
-			}
-			
-			//para validar el campo contraseña
-			if(formulario.contrasenia.value.length < 6){
-			  formulario.contrasenia.focus();
-				alert('Contenido del campo contraseña demasiado corto. La contraseña debe tener al menos 6 caracteres');
-				return false;
-			}
-
-			//para validar el campo repiticion de contraseña
-			if(formulario.contrasenia2.value != formulario.contrasenia.value){
-			  formulario.contrasenia2.focus();
-				alert('Las contraseñas no coinciden. Vuelva a introducir la contraseña');
-				return false;
-			}
-			
-			return true;
-		}
-	</script>-->
 </body>
 </html>
