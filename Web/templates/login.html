@@ -1,0 +1,73 @@
+## -*- coding: utf-8 -*-
+
+<%include file="header.html"/>
+
+ 		<div id="sample_container_id">
+    		<div class="row"></div>
+    		<div class="col-lg-12 ">
+      		<div class="thumbnail">
+        			<div class="row featurette">
+          			<div class="col-md-7">
+            			<div class="row">
+              				<div class="col-md-4"></div>
+              				<div class="col-md-5">
+									%if mensaje:
+										<span style="font-size:18px; font-family:arial; color:red"> ${mensaje} </span>
+									% endif
+
+                				<form method="post">
+										${form.render()}
+						      	</form>
+              				</div>
+              				<div class="col-md-4"></div>
+            			</div>
+          			</div>
+          		<div class="col-md-5">
+              		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                		<!-- Indicators -->
+                		<ol class="carousel-indicators">
+                  		<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                  		<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                  		<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                		</ol>
+
+                		<!-- Wrapper for slides -->
+                		<div class="carousel-inner">
+                  		<div class="item active">
+                    			<img class="container" src="/static/images/logotipo.png" alt="Foto1">
+                    			<div class="carousel-caption">
+                      			<h3>Calcule sus gastos de forma sencilla</h3>
+                      			<p>En cualquier momento y desde cualquier lugar.</p>
+                    			</div>
+                  		</div>
+                  		<div class="item 1">
+                    			<img class="container" src="/static/images/calculadora.jpg" alt="Foto2">
+                    			<div class="carousel-caption">
+                      			<h3>Comience su nuevo plan de ahorro.</h3>
+                      			<p>Las gráficas le mostrarán que meses ahorra más y en qué.</p>
+                    			</div>
+                  		</div>
+                  		<div class="item 2">
+                    			<img class="container" src="/static/images/fix-3.jpg" alt="Foto3">
+                    			<div class="carousel-caption">
+                      			<h3>Acceda a sus gastos fácilmente.</h3>
+                    			</div>
+                  		</div>
+                		</div>
+                		<div>
+                  		<!-- Controls -->
+                  		<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                    			<span class="glyphicon glyphicon-chevron-left"></span>
+    							</a> 
+								<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                    			<span class="glyphicon glyphicon-chevron-right"></span>
+                  		</a>
+                		</div>
+              		</div>
+            	</div>
+          	</div>
+        	</div>
+      </div>
+    </div>
+  	</div>
+<%include file="footer.html"/>

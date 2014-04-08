@@ -12,9 +12,11 @@ from web.contrib.template import render_mako
 import pymongo
 
 urls = (
+
 	'/index', 'index',
 	'/givememoney', 'givememoney',
 	'/(.*)', 'error' 
+
 )
 
 #To use sesions with web.py
