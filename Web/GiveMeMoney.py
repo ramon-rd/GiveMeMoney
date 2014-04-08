@@ -14,6 +14,7 @@ import pymongo
 urls = (
 	'/index', 'index',
 	'/givememoney', 'givememoney',
+	'/logout', 'logout',
 	'/(.*)', 'error' 
 )
 
@@ -29,7 +30,7 @@ session = web.session.Session(app, web.session.DiskStore('session'), initializer
 #Connection to Mongo's Database.
 #Connection try
 try:
-	conn=pymongo.MongoClient()
+	conn=pymongo.Connection()
 	print "Conexión realizada con éxito"
 #Catch possible exceptions
 except pymongo.errors.ConnectionFailure, e:
@@ -55,7 +56,7 @@ render = render_mako(
 #Login for user register.
 login_form = form.Form(
 	form.Textbox ('usuario', form.notnull, description='Usuario: '), #Textbox object to write the user nickname
-	form.Password ('contrasenia', form.notnull, description=u'Contraseña: '), #Password object to occult the user pass
+	form.Password ('contrasenia', form.notnull, description='Contrasenia: '), #Password object to occult the user pass
 	form.Button ('Ingresar'), #Button object to click and send the data
 )
 
@@ -89,7 +90,7 @@ class index:
 
 		i = web.input()
 		usuario = i.usuario #There is the content of user name
-		password = i.contasenia
+		password = i.contrasenia
 
 		if password == correct_password (usuario):
 			session.usuario = usuario
@@ -107,6 +108,13 @@ class givememoney:
 			return render.givememoney(usuario = usuario)
 		else:
 			return web.seeother('/index')
+
+## Class logout ##
+class logout:
+	def GET(self):
+		usuario = session.usuario
+		session.kill()
+		return 'Adios ' + usuario
 
 ## Class error ##
 class error:
