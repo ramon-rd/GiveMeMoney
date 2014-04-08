@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>GiveMeMoney</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+  </head>
+  <body> 
+ <nav class="navbar navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="">GiveMeMoney </a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/GiveMeMoney/web/givememoney.html">Perfil</a></li>  
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+      </form>
+      <form style="padding-top: 8px" class="nav navbar-nav navbar-right">
+      </form>
+    </div>
+  </div>
+</nav>
+
+  <h1>GiveMeMoney</h1>
+    <div id="sample_container_id">
+      <div class="row"></div>
+        <div class="col-lg-12 ">
+          <div class="thumbnail">
+          <div class="row featurette">
+            <div class="col-md-8">
+              <h3>La herramienta gestionar tu dinero.</h3>
+                  <p id="sample_text_id">  Es una aplicación que te permitirá controlar fácilmente de gastos diarios, semanales, mensuales y anuales.</p>  
+                  <p> Podrás manejar finanzas de tu casa o de tu negocio gracias a la posibilidad de poder crear perfiles de usuario.</p>
+                  <p> Como principal funcionalidad, destaca el poder consultar estadísticas e informes de gastos que os permitirán ver los gastos por día, semana, mes y año.  También se pueden consultar multitud de informes de dos niveles:  </p>
+                  <p> - Tipo de gasto.</p>
+                  <p> - Temporización. </p>
+            </div>
+            <div class="col-md-4">
+              <img class="featurette-image img-responsive" src="images/logotipo.png" alt="GiveMeMoney">
+            </div>
+          </div>     
+          </div>
+       </div>
+    </div>
+      <div>
+      <div class="row"></div>
+        <div class="col-xs-12 col-md-12">
+          <div class="thumbnail">
+              <h2>Contacto</h2>
+                
+                <div id="space"></div>
+          <div class="container">
+            <section class="row">
+              <article class="col-sm-4 col-md-4 col-lg-4">
+                <div class="profile">
+                  <img src="images/fotos/ramon.jpg" alt="..." class="img-circle">
+                  <h3>Ramon Rueda</h3>                  
+                </div>
+              </article>
+              
+                <article class="col-sm-4 col-md-4 col-lg-4">
+                <div class="profile">
+                  <img src="images/fotos/luis.jpeg" alt="..." class="img-circle">
+                  <h3>Luis Redondo</h3>
+                  
+                </div>
+              </article>
+              
+                   <article class="col-sm-4 col-md-4 col-lg-4">
+                <div class="profile">
+                  <img src="images/fotos/juanfran.jpg" alt="..." class="img-circle">
+                   <h3>Juan Francisco Robles</h3>
+                </div>
+              </article>
+                    
+              
+            </section>
+            
+                       <section class="row">
+              <article class="col-sm-4 col-md-4 col-lg-4">
+                <div class="profile">
+                  <img src="images/fotos/viki.jpg" alt="..." class="img-circle">
+                   <h3>Victoria Santiago</h3>
+                </div>
+              </article>
+              
+                <article class="col-sm-4 col-md-4 col-lg-4">
+                <div class="profile">
+                  <img src="images/fotos/castillo.jpg" alt="..." class="img-circle">
+                   <h3>José Manuel Castillo</h3>
+                </div>
+              </article>
+              
+                   <article class="col-sm-4 col-md-4 col-lg-4">
+                <div class="profile">
+                  <img src="images/fotos/josemlp.jpg" alt="..." class="img-circle">
+                   <h3>José Miguel López</h3>
+                </div>
+              </article>
+              
+              
+              
+            </section>
+          </div>
+                
+          </div>
+          
+          </div>
+          
+               
+      </div>    
+      
+    </div>
+    
+    
+<!--FOOTER--->
+    
+    <footer class="panel-footer" role="navigation">
+      <div class="container">
+        <div class="col-sm-3">
+          <table class="table table-condensed">
+            <thead>
+              <td><h3>Offices</h3></td>
+            </thead>
+            <tr>
+              <td><strong>GiveMeMoney &amp; Publishing</strong></td>
+            </tr>
+            <tr>
+              <td>Calle Periodista Daniel Saucedo Aranda s/n</td>
+            </tr>
+            <tr>
+             <td>Granada 18009 - SPAIN</td>
+           </tr>
+         </table>
+       </div>
+       <div class="col-sm-3">
+         <table class="table table-condensed">
+           <thead>
+             <td><h3>Join Us</h3></td>
+           </thead>
+           <tr>
+             <td>jcastilloprez@correo.ugr.es</td>
+           </tr>
+           <tr>
+             <td>josemlp.montefrio@gmail.com</td>
+           </tr>
+           <tr>
+             <td>victoriasantiago@correo.ugr.es</td>
+           </tr>
+         </table>
+       </div>
+       <div class="col-sm-3">
+         <table class="table table-condensed">
+           <thead>
+             <td><h3>Join Us</h3></td>
+           </thead>
+           <tr>
+             <td>+34 958 242 802</td>
+           </tr>
+           <tr>
+             <td>juanfraroble@gmail.com</td>
+           </tr>
+           <tr>
+             <td>ramon92@correo.ugr.es</td>
+           </tr>
+         </table>
+       </div>
+       <div class="col-sm-3">
+         <table class="table table-condensed">
+           <thead>
+             <td><h3>Stop By</h3></td>
+           </thead>
+           <tr>
+             <td>Monday - Friday 8:30 - 17:30</td>
+           </tr>
+           <tr>
+             <td>Saturday: Closed</td>
+           </tr>
+           <tr>
+             <td>Sunday: Closed</td>
+           </tr>
+         </table>
+       </div>
+       <div>
+       <p>Publicado bajo licencia GNU GENERAL PUBLIC LICENSE Version 3</p>
+       </div>
+      </div>
+    </footer>
+    
+  </body>
+</html>
