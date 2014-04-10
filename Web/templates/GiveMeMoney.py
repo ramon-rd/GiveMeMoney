@@ -76,25 +76,8 @@ gastos_form = form.Form(
 	form.Button ('Enviar'),
 	#for i in tipo_gasto:
 		#validators = [form.Validator(i, lambda j: (int (j.cantidad) > 0))],
-	validators = [form.Validator("Valor introducido incorrecto", lambda i: ((int (i.alimentacion) >= 0)) and (int (i.hogar) >= 0) and (int (i.escolares) >= 0) and (int (i.transportes) >= 0) and (int (i.ocio) >= 0) and (int (i.otros) >= 0))]
+	validators = [form.Validator("Valor introducido incorrecto", lambda i: ((int (i.Alimentacion) > 0)) and (int (i.Gastos_del_hogar) > 0) and (int (i.Escolares) > 0) and (int (i.Transportes) > 0) and (int (i.Ocio) > 0) and (int (i.Otros) > 0))]
 )
-
-#Intro beneficios form
-beneficios_form = form.Form(
-	#form.Dropdown("gastos",['Alimentación', 'Gastos del hogar', 'Escolares', 'Transportes', 'Ocio', 'Otros'], description="Tipos de gasto"),
-	#tipo_gasto = ['Alimentación', 'Gastos del hogar', 'Escolares', 'Transportes', 'Ocio', 'Otros'],
-	form.Textbox ('deudas', form.notnull, description = 'Dinero ingresado por pagos de deudas'),
-	form.Textbox ('trabajo', form.notnull, description = 'Tu salario'),
-	form.Textbox ('premios', form.notnull, description = 'Premios económicos'),
-	form.Textbox ('ventas', form.notnull, description = 'Ingresos por ventas'),
-	form.Textbox ('otros', form.notnull, description = 'Otros ingresos'),
-	#form.Textbox ('cantidad', form.notnull, form.regexp('^([0-9]{2})$', 'La cantidad introducida no es válida', description='Cantidad')
-	form.Button ('Enviar'),
-	#for i in tipo_gasto:
-		#validators = [form.Validator(i, lambda j: (int (j.cantidad) > 0))],
-	validators = [form.Validator("Valor introducido incorrecto", lambda i: ((int (i.deudas) >= 0)) and (int (i.trabajo) >= 0) and (int (i.premios) >= 0) and (int (i.ventas) >= 0) and (int (i.otro) >= 0))]
-)
-
 #Register form #
 registro_form = form.Form(
 	form.Textbox ('nombre', form.notnull, description = 'Nombre'), 
@@ -107,7 +90,7 @@ registro_form = form.Form(
 	form.Password ('passv', form.notnull, description = 'Repita su contrasenia'),
 	form.Checkbox ('permission', form.Validator('Debes aceptar las clausulas de proteccion de datos.', lambda i: 'permission' not in i), description = 'Aceptacion de clausulas de proteccion de datos'),
 	form.Button('Enviar'),
-	validators = [form.Validator("La contrasenia no coincide", lambda i: i.password == i.passv), form.Validator("Tamanio de contrasenia incorrecto", lambda i: len(i.password) >= 6), form.Validator("Fecha de nacimiento incorrecta", lambda i: (((str(i.mes) == 'febrero') and ((int(i.dia) <= 28) and ((int(i.anio) % 4) != 0) or (int(i.dia) <= 29) and ((int(i.anio) % 4) == 0))) or ((int(i.dia) <= 31) and ((str(i.mes) == 'enero') or (str(i.mes) == 'marzo') or (str(i.mes) == 'julio') or (str(i.mes) == 'agosto') or (str(i.mes) == 'octubre') or (str(i.mes) == 'diciembre'))) or ((int(i.dia) <= 30) and ((str(i.mes) == 'abril') or (str(i.mes) == 'junio') or (str(i.mes) == 'septiembre') or (str(i.mes) == 'noviembre')))))]
+	validators = [form.Validator("La contrasenia no coincide", lambda i: i.password == i.passv), form.Validator("Tamanio de contrasenia incorrecto", lambda i: len(i.password) >= 7), form.Validator("Fecha de nacimiento incorrecta", lambda i: (((str(i.mes) == 'febrero') and ((int(i.dia) <= 28) and ((int(i.anio) % 4) != 0) or (int(i.dia) <= 29) and ((int(i.anio) % 4) == 0))) or ((int(i.dia) <= 31) and ((str(i.mes) == 'enero') or (str(i.mes) == 'marzo') or (str(i.mes) == 'julio') or (str(i.mes) == 'agosto') or (str(i.mes) == 'octubre') or (str(i.mes) == 'diciembre'))) or ((int(i.dia) <= 30) and ((str(i.mes) == 'abril') or (str(i.mes) == 'junio') or (str(i.mes) == 'septiembre') or (str(i.mes) == 'noviembre')))))]
 )
 
 ##### FUNCTIONS ######
@@ -165,14 +148,14 @@ class registro:
 		if not form.validates():
 			return render.registro (usuario = usuario, form = form)
 		else:
-			birth = form.d.dia + '/' + form.mes + '/' + form.anio
-			pack_registro = {"nombre": form.d.nombre,
+			packet_registro = {"nombre": form.d.nombre,
 									"apellidos": form.d.apellidos,
 									"email": form.d.email,
-									"birth": birth,
-									"password": form.d.password
+									"birth": form.d.birth,
+									"password": form.d.password,
+									"passv": form.d.passv
 									}
-			coll.insert(pack_registro)
+			coll = insert(packet_registro)
 		return render.login(usuario = usuario, form = form, mensaje = "Usuario registrado correctamente") 
 
 ## Class gastos ##
@@ -181,48 +164,24 @@ class gastos:
 		usuario = check_identification ()
 		
 		form = gastos_form()
-		return render.gasto (usuario = usuario, form = form)
+		return render.Gasto (usuario = usuario, form = form)
 
 	def POST(self):
 		usuario = check_identification ()
 
 		form = gasto_form()
 		if not form.validates():
-			return render.gasto (usuario = usuario, form = form)
+			return render.Gasto (usuario = usuario, form = form)
 		else:
-			pack_gasto = {"alimentacion": form.d.alimentacion,
+			tipo_gast = {"alimentacion": form.d.alimentacion,
 							"hogar": form.d.hogar,
 							"escolares": form.d.escolares,
 							"transportes": form.d.transportes,
 							"ocio": form.d.ocio,
 							"otros": form.d.otros
 							}
-			coll.insert(pack_gasto)
+			coll = insert(tipo_gast)
 		return render.givememoney(usuario = usuario, form = form, mensaje = "Gastos insertados correctamente")
-
-## Class beneficios ##
-class beneficios:
-	def GET(self):
-		usuario = check_identification ()
-		
-		form = beneficios_form()
-		return render.beneficio (usuario = usuario, form = form)
-
-	def POST(self):
-		usuario = check_identification ()
-
-		form = beneficios_form()
-		if not form.validates():
-			return render.beneficio (usuario = usuario, form = form)
-		else:
-			pack_benefit = {"deudas": form.d.deudas,
-							"trabajo": form.d.trabajo,
-							"premios": form.d.premios,
-							"ventas": form.d.ventas,
-							"otros": form.d.otros
-							}
-			coll.insert(pack_benefit)
-		return render.givememoney(usuario = usuario, form = form, mensaje = "Beneficios insertados correctamente")
 
 ## Class givememoney ##
 class givememoney:
