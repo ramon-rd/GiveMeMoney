@@ -83,7 +83,7 @@ registro_form = form.Form(
 	form.Textbox ('apellidos', form.notnull, description = 'Apellidos'),
 	form.Textbox ('email', form.notnull, description = 'E-mail'),
 	## Pon aquí la fecha de nacimiento, Casti ##
-	form.Password ('pass', form.notnull, description = 'Password', post = u'La contaseña debe tener al menos 6 caracteres.'),
+	form.Password ('password', form.notnull, description = 'Password', post = u'La contaseña debe tener al menos 6 caracteres.'),
 	form.Password ('passv', form.notnull, description = u'Repita su contraseña'),
 	form.Checkbox ('permission', form.Validator('Debes aceptar las claúsulas de protección de datos.', lambda i: 'permission' not in i), description = 'Aceptación de claúsulas de protección de datos'),
 	form.Button('Enviar'),
@@ -146,7 +146,14 @@ class registro:
 			return render.Registro (usuario = usuario, form = form)
 		else:
 			packet_registro = {"nombre": form.d.nombre,
-									"apellidos": form.d.apellidos,}
+									"apellidos": form.d.apellidos,
+									"email": form.d.email,
+									"birth": form.d.birth,
+									"password": form.d.password,
+									"passv": form.d.passv
+									}
+			coll = insert(packet_registro)
+		return render.givememoney(usuario = usuario, form = form, mensaje = "Usuario registrado correctamente") 
 
 ## Class gastos ##
 class gastos:
@@ -169,9 +176,9 @@ class gastos:
 							"transportes": form.d.transportes,
 							"ocio": form.d.ocio,
 							"otros": form.d.otros
-			}
+							}
 			coll = insert(tipo_gast)
-			return render.givememoney(usuario = usuario, form = form, mensaje = "Gastos insertados correctamente")
+		return render.givememoney(usuario = usuario, form = form, mensaje = "Gastos insertados correctamente")
 
 ## Class givememoney ##
 class givememoney:
