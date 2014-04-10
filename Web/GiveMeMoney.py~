@@ -14,6 +14,7 @@ import pymongo
 urls = (
 	'/index', 'index',
 	'/givememoney', 'givememoney',
+	'/registro', 'registro',
 	'/logout', 'logout',
 	'/(.*)', 'error' 
 )
@@ -64,17 +65,29 @@ login_form = form.Form(
 gastos_form = form.Form(
 	#form.Dropdown("gastos",['Alimentación', 'Gastos del hogar', 'Escolares', 'Transportes', 'Ocio', 'Otros'], description="Tipos de gasto"),
 	#tipo_gasto = ['Alimentación', 'Gastos del hogar', 'Escolares', 'Transportes', 'Ocio', 'Otros'],
-	form.Textbox ('Alimentacion', form.notnull, description = 'Gastos en alimentación'),
-	form.Textbox ('Gastos_del_hogar', form.notnull, description = 'Gastos del hogar'),
-	form.Textbox ('Escolares', form.notnull, description = 'Gastos en material escolar'),
-	form.Textbox ('Transportes', form.notnull, description = 'Gastos en transportes'),
-	form.Textbox ('Ocio', form.notnull, description = 'Gastos ocio y tiempo libre'),
-	form.Textbox ('Otros', form.notnull, description = 'Otros gastos'),
+	form.Textbox ('alimentacion', form.notnull, description = 'Gastos en alimentación'),
+	form.Textbox ('hogar', form.notnull, description = 'Gastos del hogar'),
+	form.Textbox ('escolares', form.notnull, description = 'Gastos en material escolar'),
+	form.Textbox ('transportes', form.notnull, description = 'Gastos en transportes'),
+	form.Textbox ('ocio', form.notnull, description = 'Gastos ocio y tiempo libre'),
+	form.Textbox ('otros', form.notnull, description = 'Otros gastos'),
 	#form.Textbox ('cantidad', form.notnull, form.regexp('^([0-9]{2})$', 'La cantidad introducida no es válida', description='Cantidad')
 	form.Button ('Enviar'),
 	#for i in tipo_gasto:
 		#validators = [form.Validator(i, lambda j: (int (j.cantidad) > 0))],
 	validators = [form.Validator("Valor introducido incorrecto", lambda i: ((int (i.Alimentacion) > 0)) and (int (i.Gastos_del_hogar) > 0) and (int (i.Escolares) > 0) and (int (i.Transportes) > 0) and (int (i.Ocio) > 0) and (int (i.Otros) > 0))]
+)
+#Register form #
+registro_form = form.Form(
+	form.Textbox ('nombre', form.notnull, description = 'Nombre'), 
+	form.Textbox ('apellidos', form.notnull, description = 'Apellidos'),
+	form.Textbox ('email', form.notnull, description = 'E-mail'),
+	## Pon aquí la fecha de nacimiento, Casti ##
+	form.Password ('pass', form.notnull, description = 'Password', post = u'La contaseña debe tener al menos 6 caracteres.'),
+	form.Password ('passv', form.notnull, description = u'Repita su contraseña'),
+	form.Checkbox ('permission', form.Validator('Debes aceptar las claúsulas de protección de datos.', lambda i: 'permission' not in i), description = 'Aceptación de claúsulas de protección de datos'),
+	form.Button('Enviar'),
+	## Añadir validadores ##
 )
 
 ##### FUNCTIONS ######
@@ -116,6 +129,25 @@ class index:
 			form = login_form()
 			return render.login(form = form, usuario = '', mensaje = u'La contraseña introducida es incorrecta, la clave correcta es tu nombre de usuario seguido de un 3')
 
+## Class register ##
+class registro:
+	def GET(self):
+		usario = check_identification ()
+
+		form = registro_form()
+		return render.Registro (usuario = usuario, form = form)
+
+	def POST(self):
+		usuario = check_identification ()
+
+		form = registro_form()
+		
+		if not form.validates():
+			return render.Registro (usuario = usuario, form = form)
+		else:
+			packet_registro = {"nombre": form.d.nombre,
+									"apellidos": form.d.apellidos,}
+
 ## Class gastos ##
 class gastos:
 	def GET(self):
@@ -131,12 +163,12 @@ class gastos:
 		if not form.validates():
 			return render.Gasto (usuario = usuario, form = form)
 		else:
-			tipo_gast = {"Alimentacion": form.d.Alimentacion,
-							"Gastos_del_hogar": form.d.Gastos_del_hogar,
-							"Escolares": form.d.Escolares,
-							"Transportes": form.d.Transportes,
-							"Ocio": form.d.Ocio,
-							"Otros": form.d.Otros
+			tipo_gast = {"alimentacion": form.d.alimentacion,
+							"hogar": form.d.hogar,
+							"escolares": form.d.escolares,
+							"transportes": form.d.transportes,
+							"ocio": form.d.ocio,
+							"otros": form.d.otros
 			}
 			coll = insert(tipo_gast)
 			return render.givememoney(usuario = usuario, form = form, mensaje = "Gastos insertados correctamente")
