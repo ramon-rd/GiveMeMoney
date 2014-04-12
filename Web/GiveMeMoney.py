@@ -20,6 +20,10 @@ urls = (
 	'/(.*)', 'error' 
 )
 
+MONGODB_URI = 'mongodb://josemlp:660281871@ds029630.mongolab.com:29630/givememoney' 
+
+
+
 #To use sesions with web.py
 web.config.debug = False
 
@@ -31,21 +35,26 @@ session = web.session.Session(app, web.session.DiskStore('session'), initializer
 
 #Connection to Mongo's Database.
 #Connection try
+
 try:
-	conn=pymongo.Connection()
+	client = pymongo.MongoClient(MONGODB_URI)
+	db = client.get_default_database()
+
 	print "Conexión realizada con éxito"
 #Catch possible exceptions
 except pymongo.errors.ConnectionFailure, e:
 	print "Fallo en la conexión a MongoDB: %s" %e
-conn #Make the new connection
+
 
 #Create the database for instance our collection
-db = conn.usuarios
-db #To use the database variable later.
+db = client.get_default_database()
+
 
 #Instance the Mongo's collection where i'll introduce the data
-coll = db.datos
-coll #To use the collection variable later
+
+user = db['usuariosGiveMeMoney']
+
+
 
 #Templates structure
 #Mako templates
@@ -172,7 +181,12 @@ class registro:
 									"birth": birth,
 									"password": form.d.password
 									}
-			coll.insert(pack_registro)
+			user.insert(pack_registro)
+
+			cursor = user.find()
+			for doc in cursor:
+				print (doc['nombre'], doc['apellidos'])
+
 			formi = login_form()
 		return render.login(usuario = usuario, form = formi, mensaje = "Usuario registrado correctamente") 
 
@@ -198,7 +212,7 @@ class gastos:
 							"ocio": form.d.ocio,
 							"otros": form.d.otros
 							}
-			coll.insert(pack_gasto)
+			#coll.insert(pack_gasto)
 		return render.givememoney(usuario = usuario, form = form, mensaje = "Gastos insertados correctamente")
 
 ## Class beneficios ##
@@ -222,7 +236,7 @@ class beneficios:
 							"ventas": form.d.ventas,
 							"otros": form.d.otros
 							}
-			coll.insert(pack_benefit)
+			#coll.insert(pack_benefit)
 		return render.givememoney(usuario = usuario, form = form, mensaje = "Beneficios insertados correctamente")
 
 ## Class givememoney ##
