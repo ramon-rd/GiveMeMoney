@@ -52,8 +52,9 @@ db = client.get_default_database()
 
 #Instance the Mongo's collection where i'll introduce the data
 
-user = db['usuariosGiveMeMoney']
-
+user =       db['usuariosGiveMeMoney']
+gastos =     db['gastos']
+beneficios = db['beneficios']
 
 
 #Templates structure
@@ -212,7 +213,12 @@ class gastos:
 							"ocio": form.d.ocio,
 							"otros": form.d.otros
 							}
-			#coll.insert(pack_gasto)
+			gastos.insert(pack_gasto)
+
+			cursor = gastos.find()
+			for doc in cursor:
+				print (doc['alimentacion'], doc['hogar'], doc['transportes'], doc['ocio'], doc['otros'])
+
 		return render.givememoney(usuario = usuario, form = form, mensaje = "Gastos insertados correctamente")
 
 ## Class beneficios ##
@@ -236,7 +242,13 @@ class beneficios:
 							"ventas": form.d.ventas,
 							"otros": form.d.otros
 							}
-			#coll.insert(pack_benefit)
+
+			beneficios.insert(pack_benefit)
+
+			cursor = beneficios.find()
+			for doc in cursor:
+				print (doc['deuda'], doc['trabajo'], doc['premio'], doc['venta'], doc['otros'])
+
 		return render.givememoney(usuario = usuario, form = form, mensaje = "Beneficios insertados correctamente")
 
 ## Class givememoney ##
