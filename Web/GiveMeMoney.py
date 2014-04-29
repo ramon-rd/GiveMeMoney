@@ -17,6 +17,9 @@ urls = (
 	'/registro', 'registro',
 	'/logout', 'logout',
 	'/contacto', 'contacto',
+	'/gastos', 'gastos',
+	'/ingresos', 'ingresos',
+	'/modificar', 'modificar',
 	'/(.*)', 'error' 
 )
 
@@ -78,7 +81,7 @@ login_form = form.Form(
 gastos_form = form.Form(
 	#form.Dropdown("gastos",['Alimentación', 'Gastos del hogar', 'Escolares', 'Transportes', 'Ocio', 'Otros'], description="Tipos de gasto"),
 	#tipo_gasto = ['Alimentación', 'Gastos del hogar', 'Escolares', 'Transportes', 'Ocio', 'Otros'],
-	form.Textbox ('alimentacion', form.notnull, description = 'Gastos en alimentación'),
+	form.Textbox ('alimentacion', form.notnull, description = 'Gastos en alimentacion'),
 	form.Textbox ('hogar', form.notnull, description = 'Gastos del hogar'),
 	form.Textbox ('escolares', form.notnull, description = 'Gastos en material escolar'),
 	form.Textbox ('transportes', form.notnull, description = 'Gastos en transportes'),
@@ -97,7 +100,7 @@ beneficios_form = form.Form(
 	#tipo_gasto = ['Alimentación', 'Gastos del hogar', 'Escolares', 'Transportes', 'Ocio', 'Otros'],
 	form.Textbox ('deudas', form.notnull, description = 'Dinero ingresado por pagos de deudas'),
 	form.Textbox ('trabajo', form.notnull, description = 'Tu salario'),
-	form.Textbox ('premios', form.notnull, description = 'Premios económicos'),
+	form.Textbox ('premios', form.notnull, description = 'Premios economicos'),
 	form.Textbox ('ventas', form.notnull, description = 'Ingresos por ventas'),
 	form.Textbox ('otros', form.notnull, description = 'Otros ingresos'),
 	#form.Textbox ('cantidad', form.notnull, form.regexp('^([0-9]{2})$', 'La cantidad introducida no es válida', description='Cantidad')
@@ -195,6 +198,55 @@ class registro:
 			formi = login_form()
 		return render.login(usuario = usuario, form = formi, mensaje = "Usuario registrado correctamente") 
 
+class modificar:
+	def GET(self):
+		usuario = check_identification ()
+
+		form = registro_form()
+
+		cursor = coll.find({"email":form.d.email})
+		nombre = cursor[0]["nombre"]
+		apellidos = cursor[0]["apellidos"]
+		email = cursor[0]["email"]
+		birth = cursor[0]["birth"]
+		dia,mes,anio = str(birth).split()
+		password = cursor[0]["password"]
+
+		form.nombre.value = nombre
+		form.apellidos.value = apellidos
+		form.email.value = email
+		form.dia.value = int(dia)
+		form.mes.value = mes
+		form.anio.value = int(anio)	
+		form.contrasenia.value = password
+		form.verificacion.value = password
+
+		return render.modificarperfil(usuario = usuario, form = form)
+
+	def POST(self):
+		usuario = check_identification ()
+
+		form = registro_form()
+
+		if not form.validates():
+			return render.modificarperfil(usuario = usuario, form = form)
+		else:
+			birth = form.d.dia + '/' + form.d.mes + '/' + form.d.anio
+
+			pack_registro = {"nombre": form.d.nombre,
+									"apellidos": form.d.apellidos,
+									"email": form.d.email,
+									"birth": birth,
+									"password": form.d.password
+									}
+
+			coll.remove({"email":form.d.email})
+			coll.insert(pack_registro)
+
+		formi = login_form()
+		
+		return render.login(usuario = usuario, form = formi, mensaje = "Usuario modificado correctamente") 
+
 ## Class gastos ##
 class gastos:
 	def GET(self):
@@ -227,19 +279,19 @@ class gastos:
 		return render.givememoney(usuario = usuario, form = form, mensaje = "Gastos insertados correctamente")
 
 ## Class beneficios ##
-class beneficios:
+class ingresos:
 	def GET(self):
 		usuario = check_identification ()
 		
 		form = beneficios_form()
-		return render.beneficio (usuario = usuario, form = form)
+		return render.ingresos (usuario = usuario, form = form)
 
 	def POST(self):
 		usuario = check_identification ()
 
 		form = beneficios_form()
 		if not form.validates():
-			return render.beneficio (usuario = usuario, form = form)
+			return render.ingresos (usuario = usuario, form = form)
 		else:
 			pack_benefit = {"deudas": form.d.deudas,
 							"trabajo": form.d.trabajo,
