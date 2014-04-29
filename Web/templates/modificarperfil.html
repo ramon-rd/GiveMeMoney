@@ -1,198 +1,24 @@
-<!DOCTYPE html>
+## -*- coding: utf-8 -*-
 
-<html>
-<head>
-<meta charset="utf-8">
-<title>GiveMeMoney</title>
-<link rel="stylesheet" href="css/bootstrap.min.css">
-</head>
+<%include file="header.html"/>
+<%include file="information.html"/>
 
-<body>
-  <nav class="navbar navbar-inverse" role="navigation">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle"
-          data-toggle="collapse"
-          data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span> <span
-            class="icon-bar"></span> <span class="icon-bar"></span> <span
-            class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand">GiveMeMoney </a>
-      </div>
-      <div class="collapse navbar-collapse"
-        id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li><a href="/GiveMeMoney/web/contacto.html">Conócenos</a></li>
-        </ul>
-        <form class="navbar-form navbar-left" role="search">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
+  
+    <div id="sample_container_id">
+      <div class="row"></div>
+        <div class="col-lg-12 ">
+          <div class="thumbnail">
+          	<div class="row featurette">
+            	<div class="col-md-2">
+            	</div>
+            	<div class="col-md-10">
+               	<form method="post">
+							${form.render()}
+						</form>
+            	</div>
+          	</div>     
           </div>
-        </form>
-        <form style="padding-top: 8px"
-          class="nav navbar-nav navbar-right">
-          <a href="/GiveMeMoney/web/login.html"><button
-              type="button" class="btn btn-success">Login</button></a>
-        </form>
-      </div>
+       </div>
     </div>
-  </nav>
-  <h1>GiveMeMoney</h1>
-  <div id="sample_container_id">
-    <div class="row"></div>
-    <div class="col-lg-12 ">
-      <div class="thumbnail">
-        <div class="row featurette">
-          <div class="col-md-8">
-            <h3>La herramienta gestionar tu dinero.</h3>
-            <p id="sample_text_id">Es una aplicación que te
-              permitirá controlar fácilmente de gastos diarios,
-              semanales, mensuales y anuales.</p>
-            <p>Podrás manejar finanzas de tu casa o de tu negocio
-              gracias a la posibilidad de poder crear perfiles de
-              usuario.</p>
-            <p>Como principal funcionalidad, destaca el poder
-              consultar estadísticas e informes de gastos que os
-              permitirán ver los gastos por día, semana, mes y año.
-              También se pueden consultar multitud de informes de dos
-              niveles:</p>
-            <p>- Tipo de gasto.</p>
-            <p>- Temporización.</p>
-          </div>
-          <div class="col-md-4">
-            <img class="featurette-image img-responsive"
-              src="images/logotipo.png" alt="GiveMeMoney">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="sample_container_id">
-    <div class="row"></div>
-    <div class="col-lg-12 ">
-      <div class="thumbnail">
-        <div class="row featurette">
-          <div class="col-md-4"></div>
-          <div class="col-md-4">
-            <form action="/GiveMeMoney/web/givememoney.html">
-              <fieldset>
-                <legend>Modifique sus datos personales</legend>
-                <label>Nombre: </label><br> <input id="nombre"
-                  title="Introduzca un nombre" type="text"/> <br>
-                <br> <label>Apellidos: </label><br> <input
-                  id="apellidos" title="Introduzca sus apellidos"
-                  type="text"/> <br>
-                <br> <label>Fecha de nacimiento: </label><br>
-                <input id="fecha" title="Introduzca una fecha"
-                  type="date"/> <br>
-                <br> <label>DNI: </label><br> <input id="dni"
-                  title="Introduzca un DNI valido"
-                  pattern="^([0-9]{8}[A-Z])$" type="text"
-                  placeholder="8 dígitos más letra" /> <br>
-                <br>
-              </fieldset>
-              <br>
-              <fieldset>
-                <legend>Información de usuario</legend>
-                <label>Correo electrónico: </label><br> <input
-                  id="correo"
-                  title="Introduzca una dirección de correo valida"
-                  pattern="^[a-z0-9]+(.[a-z0-9]+)*@[a-z0-9]+(.[a-z0-9]+)*(.[a-z]{2,3})$"
-                  type="text" placeholder="mail@example.com" />
-                <br>
-                <br> <label>Número de teléfono: </label><br> <input
-                  id="telefono"
-                  title="Introduzca un número de teléfono valido"
-                  pattern="^([6]|[9])([0-9]{8})$" type="text"/>
-                <br>
-                <br> <label>Contraseña: </label><br> <input
-                  id="password" type="password" /> <br>
-                <br> <label>Repita la contraseña: </label><br>
-                <input id="password2" type="password" required /> <br>
-                <br>
-              </fieldset>
-              <br>
-              <button id="enviar" class="submit">Enviar modificaciones</button>
-              <input type="reset" id="boton2" value="Borrar datos" />
-            </form>
-          </div>
-          <div class="col-md-4"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script type="application/dart" src="Registro.dart"></script>
-  <script src="packages/browser/dart.js"></script>
 
-  <footer class="panel-footer" role="navigation">
-    <div class="container">
-      <div class="col-sm-3">
-        <table class="table table-condensed">
-          <thead>
-            <td><h3>Offices</h3></td>
-          </thead>
-          <tr>
-            <td><strong>GiveMeMoney &amp; Publishing</strong></td>
-          </tr>
-          <tr>
-            <td>Calle Periodista Daniel Saucedo Aranda s/n</td>
-          </tr>
-          <tr>
-            <td>Granada 18009 - SPAIN</td>
-          </tr>
-        </table>
-      </div>
-      <div class="col-sm-3">
-        <table class="table table-condensed">
-          <thead>
-            <td><h3>Join Us</h3></td>
-          </thead>
-          <tr>
-            <td>jcastilloprez@correo.ugr.es</td>
-          </tr>
-          <tr>
-            <td>josemlp.montefrio@gmail.com</td>
-          </tr>
-          <tr>
-            <td>victoriasantiago@correo.ugr.es</td>
-          </tr>
-        </table>
-      </div>
-      <div class="col-sm-3">
-        <table class="table table-condensed">
-          <thead>
-            <td><h3>Join Us</h3></td>
-          </thead>
-          <tr>
-            <td>luis.redondo.exposito@gmail.com</td>
-          </tr>
-          <tr>
-            <td>juanfrarobles@gmail.com</td>
-          </tr>
-          <tr>
-            <td>ramon92@correo.ugr.es</td>
-          </tr>
-        </table>
-      </div>
-      <div class="col-sm-3">
-        <table class="table table-condensed">
-          <thead>
-            <td><h3>Stop By</h3></td>
-          </thead>
-          <tr>
-            <td>Monday - Friday 8:30 - 17:30</td>
-          </tr>
-          <tr>
-            <td>Saturday: Closed</td>
-          </tr>
-          <tr>
-            <td>Sunday: Closed</td>
-          </tr>
-        </table>
-      </div>
-    </div>
-  </footer>
-
-</body>
-</html>
+<%include file="footer.html"/>
