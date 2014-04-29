@@ -20,9 +20,7 @@ urls = (
 	'/(.*)', 'error' 
 )
 
-MONGODB_URI = 'mongodb://josemlp:660281871@ds029630.mongolab.com:29630/givememoney' 
-
-
+#MONGODB_URI = 'mongodb://josemlp:660281871@ds029630.mongolab.com:29630/givememoney' 
 
 #To use sesions with web.py
 web.config.debug = False
@@ -37,24 +35,28 @@ session = web.session.Session(app, web.session.DiskStore('session'), initializer
 #Connection try
 
 try:
-	client = pymongo.MongoClient(MONGODB_URI)
-	db = client.get_default_database()
+	conn=pymongo.Connection()
+	#conn=pymongo.MongoClient()
+	#client = pymongo.MongoClient(MONGODB_URI)
+	#db = client.get_default_database()
 
 	print "Conexión realizada con éxito"
 #Catch possible exceptions
 except pymongo.errors.ConnectionFailure, e:
 	print "Fallo en la conexión a MongoDB: %s" %e
-
+conn
 
 #Create the database for instance our collection
-db = client.get_default_database()
-
+#db = client.get_default_database()
+db = conn.usuarios
+db
 
 #Instance the Mongo's collection where i'll introduce the data
-
-user =       db['usuariosGiveMeMoney']
-gastos =     db['gastos']
-beneficios = db['beneficios']
+coll = db.datos
+coll
+#user =       db['usuariosGiveMeMoney']
+#gastos =     db['gastos']
+#beneficios = db['beneficios']
 
 
 #Templates structure
@@ -182,11 +184,13 @@ class registro:
 									"birth": birth,
 									"password": form.d.password
 									}
-			user.insert(pack_registro)
+			coll.insert(pack_registro)
 
-			cursor = user.find()
-			for doc in cursor:
-				print (doc['nombre'], doc['apellidos'])
+			#user.insert(pack_registro)
+
+			#cursor = user.find()
+			#for doc in cursor:
+			#	print (doc['nombre'], doc['apellidos'])
 
 			formi = login_form()
 		return render.login(usuario = usuario, form = formi, mensaje = "Usuario registrado correctamente") 
@@ -213,11 +217,12 @@ class gastos:
 							"ocio": form.d.ocio,
 							"otros": form.d.otros
 							}
-			gastos.insert(pack_gasto)
+			coll.insert(pack_gasto)
+			#gastos.insert(pack_gasto)
 
-			cursor = gastos.find()
-			for doc in cursor:
-				print (doc['alimentacion'], doc['hogar'], doc['transportes'], doc['ocio'], doc['otros'])
+			#cursor = gastos.find()
+			#for doc in cursor:
+			#	print (doc['alimentacion'], doc['hogar'], doc['transportes'], doc['ocio'], doc['otros'])
 
 		return render.givememoney(usuario = usuario, form = form, mensaje = "Gastos insertados correctamente")
 
@@ -242,12 +247,12 @@ class beneficios:
 							"ventas": form.d.ventas,
 							"otros": form.d.otros
 							}
+			coll.insert(pack_benefit)
+			#beneficios.insert(pack_benefit)
 
-			beneficios.insert(pack_benefit)
-
-			cursor = beneficios.find()
-			for doc in cursor:
-				print (doc['deuda'], doc['trabajo'], doc['premio'], doc['venta'], doc['otros'])
+			#cursor = beneficios.find()
+			#for doc in cursor:
+			#	print (doc['deuda'], doc['trabajo'], doc['premio'], doc['venta'], doc['otros'])
 
 		return render.givememoney(usuario = usuario, form = form, mensaje = "Beneficios insertados correctamente")
 
